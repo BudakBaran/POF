@@ -110,8 +110,6 @@ namespace NVIDIA.Flex
             max.z += m_actor.container.radius/3*2;
             max.y += m_actor.container.radius/3*2;
             b.SetMinMax(min, max);
-            Debug.Log("min ----->" + b.min);
-            Debug.Log("max ----->" + b.max);
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(b.center, b.size);
             ////////////////////////////////////////////////////////////////////////////
