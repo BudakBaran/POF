@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/NVIDIA/Flex Samples/1. Array Actor/Scene.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
