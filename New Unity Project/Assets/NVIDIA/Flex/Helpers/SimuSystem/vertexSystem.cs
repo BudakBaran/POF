@@ -67,35 +67,37 @@ public class vertexSystem
         this.vertices.Add(temp);
     }
 
-    float findID(Vector4 particle) // x,y,z isimlerinde bir particle position datamız var.
+    float findID(Vector4 particle, float _length, int _indice) // x,y,z isimlerinde bir particle position datamız var.
     {
         int cubeID;
 
         // Şekil dikdörtgen prizma olabilir diye her eksendeki küp sayısını ayrı hesapladık.
         //Şekil küp ise tek bir interval değerini hepsine uygula.
-        int intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius); // x ekseninde kaç küçük küp var hesapla.
-        int intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius); // y ekseninde kaç küçük küp var hesapla.
-        /// Why ceiling and what it doo
-        /// Çizgi üzeri durumlar var düzelt.
-        /// Why everything turkish are we idiot ????
-        /// Vector 3D sort research
+        int intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _length); // x ekseninde kaç küçük küp var hesapla.
+        int intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _length); // y ekseninde kaç küçük küp var hesapla.
 
-        int xId = (int)Math.Round((particle.x - _bounds.min.x) / _radius);
-        int yId = (int)Math.Round((_bounds.max.y - particle.y) / _radius);
-        int zId = (int)Math.Round((particle.z - _bounds.min.x) / _radius);
-        //Eğer küp orjinden başlarsa, yani (0,0,0) ise;
+
+        int xId = (int)Math.Ceiling((particle.x - _bounds.min.x) / _length);
+        int yId = (int)Math.Ceiling((_bounds.max.y - particle.y) / _length);
+        int zId = (int)Math.Ceiling((particle.z - _bounds.min.x) / _length);
+
 
         // on grid here (x + a(r/8)  === particle.x in some a that occurs so we have to substract 2 value and divide grid size get %)
         if ((particle.x - _bounds.min.x) % _radius == 0) {
-            xId++;
-        } else if((_bounds.max.y - particle.y) % _radius == 0){
-            yId++;
-        } else if((particle.z - _bounds.min.x) % _radius == 0){
-            zId++;
+            cubeID = (xId + 2) + (intervalx * yId) + (intervalx * intervaly * zId);
+            checkS(cubeID, _indice);
+        }
+        if ((_bounds.max.y - particle.y) % _radius == 0) {
+            cubeID = (xId + 1) + (intervalx * (yId ++)) + (intervalx * intervaly * zId);
+            checkS(cubeID, _indice);
+        }
+        if ((particle.z - _bounds.min.x) % _radius == 0) {
+            cubeID = (xId + 1) + (intervalx * (yId + 1)) + (intervalx * intervaly * (zId++));
+            checkS(cubeID, _indice);
         }
         cubeID = (xId + 1) + (intervalx * yId) + (intervalx * intervaly * zId);
-
-        Debug.Log("Cube id is:" + cubeID);
+        checkS(cubeID, _indice);
+        
 
         return cubeID;
     }
