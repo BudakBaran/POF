@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurfaceRecognition : MonoBehaviour
+public class SurfaceRecognition
 {
     // Start is called before the first frame update
     void Start()
@@ -11,6 +11,10 @@ public class SurfaceRecognition : MonoBehaviour
         
     }
 
+    public int getFive()
+    {
+        return 5;
+    }
     public float FindDistance(Vector3 vertex, Vector3 point)
     {
         return (float)Math.Sqrt(Math.Pow((vertex.x - point.x), 2) + Math.Pow((vertex.y - point.y), 2) + Math.Pow((vertex.z - point.z), 2));

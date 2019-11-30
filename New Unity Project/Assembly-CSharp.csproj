@@ -79,6 +79,8 @@
      <Compile Include="Assets\NVIDIA\Flex\Helpers\FlexSoftSkinning.cs" />
      <Compile Include="Assets\NVIDIA\Flex\Helpers\Renderer.cs" />
      <Compile Include="Assets\NVIDIA\Flex\Helpers\SimuSystem\simuData.cs" />
+     <Compile Include="Assets\NVIDIA\Flex\Helpers\SimuSystem\SurfaceRecognition.cs" />
+     <Compile Include="Assets\NVIDIA\Flex\Helpers\SimuSystem\Test.cs" />
      <Compile Include="Assets\NVIDIA\Flex\Helpers\SimuSystem\types\vertexPoint.cs" />
      <Compile Include="Assets\NVIDIA\Flex\Helpers\SimuSystem\vertexSystem.cs" />
      <Compile Include="Assets\NVIDIA\Flex\Native\Flex.cs" />
@@ -99,31 +101,31 @@
      <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FlexPrepareFluid.shader" />
      <None Include="Assets\NVIDIA\Flex\Resources\Shaders\FluidDepth.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/New Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/baran/OneDrive/Masaüstü/Pool/poolTest/poolTest/New Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -32,7 +32,7 @@ MonoBehaviour:
   m_simpleFluidAnisotropy: 2.88
   m_simpleFluidMinScale: 0.52
   m_simpleFluidMaxScale: 0.66
-  m_maxParticles: 125001
+  m_maxParticles: 36000
   m_maxDiffuse: 0
   m_maxNeighbors: 200
   m_maxContacts: 6

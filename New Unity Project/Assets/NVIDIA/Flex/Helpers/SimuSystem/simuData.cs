@@ -1,31 +1,4 @@
-﻿// This code contains NVIDIA Confidential Information and is disclosed to you
-// under a form of NVIDIA software license agreement provided separately to you.
-//
-// Notice
-// NVIDIA Corporation and its licensors retain all intellectual property and
-// proprietary rights in and to this software and related documentation and
-// any modifications thereto. Any use, reproduction, disclosure, or
-// distribution of this software and related documentation without an express
-// license agreement from NVIDIA Corporation is strictly prohibited.
-//
-// ALL NVIDIA DESIGN SPECIFICATIONS, CODE ARE PROVIDED "AS IS.". NVIDIA MAKES
-// NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE WITH RESPECT TO
-// THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT,
-// MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// Information and code furnished is believed to be accurate and reliable.
-// However, NVIDIA Corporation assumes no responsibility for the consequences of use of such
-// information or for any infringement of patents or other rights of third parties that may
-// result from its use. No license is granted by implication or otherwise under any patent
-// or patent rights of NVIDIA Corporation. Details are subject to change without notice.
-// This code supersedes and replaces all information previously supplied.
-// NVIDIA Corporation products are not authorized for use as critical
-// components in life support devices or systems without express written approval of
-// NVIDIA Corporation.
-//
-// Copyright (c) 2018 NVIDIA Corporation. All rights reserved.
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace NVIDIA.Flex
@@ -35,7 +8,7 @@ namespace NVIDIA.Flex
     public class simuData : MonoBehaviour
     {
         int length;
-        public static Vector4[] test1 = new Vector4[125001];
+        public static Vector4[] _particles = new Vector4[125001];
         #region Messages
         void OnEnable()
         {
@@ -61,14 +34,18 @@ namespace NVIDIA.Flex
         #region Private
         public Vector4[] GetParticles()
         {
-            return test1;
+            return _particles;
         }
         public int[] GetIndices()
         {
       
             return m_actor.indices;
         }
-
+        void Update()
+        {
+            _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3 * 2);
+            _vertexSystem.GroupByCells();
+        }
         public Bounds GetBounds()
         {
             Bounds b = new Bounds();
@@ -85,37 +62,30 @@ namespace NVIDIA.Flex
             return b;
         }
 
-        public float getRadius()
-        {
-            return m_actor.container.radius * 2 / 3;
-        }
+  
         void OnFlexUpdate(FlexContainer.ParticleData _particleData)
         {
             if (m_actor && m_actor.container)
             {
                 length = m_actor.indexCount;
-                _particleData.GetParticles(m_actor.indices[0], 125000, test1);
+                _particleData.GetParticles(m_actor.indices[0], 15625, _particles);
             }
+         
         }
         public virtual void OnDrawGizmos()
         {
             ////////////////////////////////////////////////////////////////////
             Bounds b = new Bounds();
-            Vector3 min = m_actor.bounds.min;
-            Vector3 max = m_actor.bounds.max;
-            min.x -= m_actor.container.radius/3*2;
-            min.z -= m_actor.container.radius/3*2;
-            min.y -= m_actor.container.radius/3*2;
-            max.x += m_actor.container.radius/3*2;
-            max.z += m_actor.container.radius/3*2;
-            max.y += m_actor.container.radius/3*2;
-            b.SetMinMax(min, max);
+            b = GetBounds();
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(b.center, b.size);
             ////////////////////////////////////////////////////////////////////////////
         }
 
+
         FlexActor m_actor;
+        SurfaceRecognition test2 = new SurfaceRecognition();
+        vertexSystem _vertexSystem = new vertexSystem();
         #endregion
     }
 }

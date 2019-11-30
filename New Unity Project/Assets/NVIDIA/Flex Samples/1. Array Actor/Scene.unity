@@ -221,8 +221,8 @@ GameObject:
   m_Component:
   - component: {fileID: 444580674}
   - component: {fileID: 444580673}
-  - component: {fileID: 444580675}
   - component: {fileID: 444580676}
+  - component: {fileID: 444580675}
   m_Layer: 0
   m_Name: Flex Array Actor
   m_TagString: Untagged
@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 444580672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.27, y: 5.07, z: -0.08}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 3.20754, y: 3.20754, z: 3.20754}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -274,10 +274,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 444580672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50727fb552f09d84fbbb274bb86a2e2e, type: 3}
+  m_Script: {fileID: 11500000, guid: bb81cd85492573248b020253056911f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {x: -2.94, y: 0.41999984, z: -2.362, w: 1}
+  particle: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &444580676
 MonoBehaviour:
   m_ObjectHideFlags: 0
