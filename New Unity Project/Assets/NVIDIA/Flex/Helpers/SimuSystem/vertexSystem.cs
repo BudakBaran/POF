@@ -30,17 +30,14 @@ public class vertexSystem
     // Vertex system runs vertexPoint and get data
     public void GroupByCells()
     {
-          // setting of hash Indıce is vertex num Insıde array is adress in list
-
+        // setting of hash Indıce is vertex num Insıde array is adress in list
         for (int i = 0; i < _particles.Length; i++)
         {
-          
             findID(_particles[i], (_radius * 4), i);
         }
-
     }
 
-    public void SetData(int[] indices, Vector4[] particles, Bounds bounds, float radius)
+    public void SetData(int[] indices, Vector4[] particles, Bounds bounds, float radius,ref vertexIndex[] groups)
     {
         // it comes from simuData class
         _indices = indices;
@@ -51,7 +48,8 @@ public class vertexSystem
         this._intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
         this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));// y ekseninde kaç küçük küp var hesapla.
         this._intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
-        this._vertices = new vertexIndex[this._intervalx * this._intervaly * this._intervalz];
+        groups = new vertexIndex[this._intervalx * this._intervaly * this._intervalz];
+        this._vertices = groups;
     }
 
     public void checkS(int vertice, int particleIndex)
@@ -111,5 +109,5 @@ public class vertexSystem
         checkS(cubeID-1, _indice);
 
     }
-
+    SurfaceRecognition a = new SurfaceRecognition();
 }

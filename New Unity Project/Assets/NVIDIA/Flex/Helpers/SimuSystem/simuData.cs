@@ -9,6 +9,7 @@ namespace NVIDIA.Flex
     {
         int length;
         public static Vector4[] _particles = new Vector4[125001];
+        public static vertexSystem.vertexIndex[] groups;
         #region Messages
         void OnEnable()
         {
@@ -43,8 +44,9 @@ namespace NVIDIA.Flex
         }
         void Update()
         {
-            _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3 * 2);
+            _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3,ref groups);
             _vertexSystem.GroupByCells();
+
         }
         public Bounds GetBounds()
         {
@@ -52,12 +54,12 @@ namespace NVIDIA.Flex
             Vector3 min = m_actor.bounds.min;
             Vector3 max = m_actor.bounds.max;
 
-            min.x -= m_actor.container.radius / 3 * 2;
-            min.z -= m_actor.container.radius / 3 * 2;
-            min.y -= m_actor.container.radius / 3 * 2;
-            max.x += m_actor.container.radius / 3 * 2;
-            max.z += m_actor.container.radius / 3 * 2;
-            max.y += m_actor.container.radius / 3 * 2;
+            min.x -= (m_actor.container.radius / 3);
+            min.z -= (m_actor.container.radius / 3);
+            min.y -= (m_actor.container.radius / 3);
+            max.x += (m_actor.container.radius / 3);
+            max.z += (m_actor.container.radius / 3);
+            max.y += (m_actor.container.radius / 3);
             b.SetMinMax(min, max);
             return b;
         }
@@ -84,7 +86,7 @@ namespace NVIDIA.Flex
 
 
         FlexActor m_actor;
-        SurfaceRecognition test2 = new SurfaceRecognition();
+        SurfaceRecognition _surfaceRecognition = new SurfaceRecognition();
         vertexSystem _vertexSystem = new vertexSystem();
         #endregion
     }
