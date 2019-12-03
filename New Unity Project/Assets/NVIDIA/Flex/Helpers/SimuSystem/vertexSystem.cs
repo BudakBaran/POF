@@ -104,10 +104,10 @@ public class vertexSystem
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
             checkS(cubeID, _indice);
         }
-        cubeID = (xId) + (this._intervalx * (yId-1)) + (this._intervalx * this._intervaly * (zId-1));
-
+        cubeID = (xId) + (this._intervalx * (yId - 1)) + (this._intervalx * this._intervaly * (zId - 1));
         checkS(cubeID-1, _indice);
 
     }
+
     SurfaceRecognition a = new SurfaceRecognition();
 }
