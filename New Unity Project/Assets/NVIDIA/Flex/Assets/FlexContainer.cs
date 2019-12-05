@@ -101,6 +101,9 @@ namespace NVIDIA.Flex
             {
                 FlexUtils.FastCopy(particleData.phases, _start * 4, ref _phases[0], 0, _count * 4);
             }
+
+          
+
             public void SetPhases(int _start, int _count, int[] _phases)
             {
                 FlexUtils.FastCopy(ref _phases[0], 0, particleData.phases, _start * 4, _count * 4);

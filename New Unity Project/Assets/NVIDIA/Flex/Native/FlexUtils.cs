@@ -41,6 +41,22 @@ namespace NVIDIA.Flex
         [DllImport(FLEXUTILS_DLL, EntryPoint = "flexUtilsFastCopy")]
         public static extern void FastCopy(ref int src, int srcOfs, IntPtr dst, int dstOfs, int size);
         [DllImport(FLEXUTILS_DLL, EntryPoint = "flexUtilsFastCopy")]
+
+        /*NV_FLEX_API void NvFlexGetSmoothParticles(NvFlexSolver* solver,
+          NvFlexBuffer* p,
+          int n
+          )
+
+          NV_FLEX_API void NvFlexGetParticles	(	NvFlexSolver * 	solver,
+          NvFlexBuffer * 	p,
+          int 	n 
+          )	
+          public void GetParticles(int _start, int _count, Vector4[] _particles)
+          {
+              FlexUtils.FastCopy(particleData.particles, _start * 16, ref _particles[0], 0, _count * 16);
+          }
+          */
+
         public static extern void FastCopy(IntPtr src, int srcOfs, ref int dst, int dstOfs, int size);
         [DllImport(FLEXUTILS_DLL, EntryPoint = "flexUtilsFastCopy")]
         public static extern void FastCopy(ref float src, int srcOfs, IntPtr dst, int dstOfs, int size);
