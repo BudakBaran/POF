@@ -48,7 +48,7 @@ namespace NVIDIA.Flex
         {
             _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3,ref groups);
             _vertexSystem.GroupByCells();
-            _surfaceRecognition.SetData(_particles, GetBounds(), ref groups);
+            _surfaceRecognition.SetData(_particles, GetBounds(), ref groups, m_actor.container.radius / 3);
             this.testDraw =  _surfaceRecognition.findAreaCells(0);
         }
         public Bounds GetBounds()
@@ -83,16 +83,20 @@ namespace NVIDIA.Flex
             Bounds b = new Bounds();
             b = GetBounds();
             Gizmos.color = Color.red;
-            /*for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < 3; i++)
             {
-      
-                for(int j = 0; j < groups[i].pointIndice.Length; j++)
+                Debug.Log(groups.Length);
+                for(int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
                 {
-                    if(groups[i].pointIndice[j] != -1)
+                    if(groups[testDraw[i]].pointIndice[j] != -1)
+                    {
                         Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z),m_actor.container.radius / 3);
+
+                    }
                 }
-            }*/
-            Gizmos.DrawWireCube(b.center, b.size);
+            }
+            //Gizmos.DrawWireCube(b.center, b.size);
             ////////////////////////////////////////////////////////////////////////////
         }
 

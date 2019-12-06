@@ -15,11 +15,12 @@ public class SurfaceRecognition
     public vertexSystem.vertexIndex[] _groups;
     Bounds _bounds;
     float _radius;
-    public void SetData(Vector4[] particles, Bounds bounds, ref vertexSystem.vertexIndex[] groups)
+    public void SetData(Vector4[] particles, Bounds bounds, ref vertexSystem.vertexIndex[] groups, float radius)
     {
         this._groups = groups;
         this._particles = particles;
         this._bounds = bounds;
+        this._radius = radius;
     }
 
     public float FindDistance(Vector3 vertex, Vector3 point)
@@ -90,27 +91,47 @@ public class SurfaceRecognition
     {
         float xMax = _particles[particleIndice].x + _radius * 4;
         if (xMax > _bounds.max.x)
+        {
             xMax = _bounds.max.x;
+        }
+
         float xMin = _particles[particleIndice].x - _radius * 4;
         if (xMin < _bounds.min.x)
+        {
             xMin = _bounds.min.x;
+        }
+            
         float yMax = _particles[particleIndice].y + _radius * 4;
         if (yMax > _bounds.max.y)
+        {
             yMax = _bounds.max.y;
+        }
+            
         float yMin = _particles[particleIndice].y - _radius * 4;
         if (yMin < _bounds.min.y)
+        {
             yMin = _bounds.min.y;
+        }
+            
         float zMax = _particles[particleIndice].z + _radius * 4;
         if (zMax > _bounds.max.z)
+        {
             zMax = _bounds.max.z;
+        }
+            
         float zMin = _particles[particleIndice].z - _radius * 4;
-        if (zMin > _bounds.max.z)
+        if (zMin < _bounds.min.z)
+        {
             zMin = _bounds.max.z;
-        Bounds insideCell = new Bounds(new Vector3(xMin,yMin,zMin), new Vector3(xMax,yMax,zMax));
+        }
+            
+        Bounds insideCell = new Bounds();
+        insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
         int topLeft = FindID(insideCell.min);
         int bottomRight = FindID(insideCell.max);
         int topRight = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
-        Debug.Log("------"+ topLeft + "-----"+ bottomRight + "-----"+ topRight);
+        //Debug.Log(insideCell.min);
+        //Debug.Log("------"+ topLeft + "-----"+ bottomRight + "-----"+ topRight);
         return new int[3] { topLeft, bottomRight, topRight };
     }
     
@@ -119,14 +140,14 @@ public class SurfaceRecognition
         int cubeID;
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));// y ekseninde kaç küçük küp var hesapla.
-        int _intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
-        int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / _radius);
-        int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / _radius);
-        int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / _radius);
+
+        int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
+        int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4));
+        int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius * 4));
 
         // on grid here (x + a(r/8)  === particle.x in some a that occurs so we have to substract 2 value and divide grid size get %)
         cubeID = (xId) + (_intervalx * (yId - 1)) + (_intervalx * _intervaly * (zId - 1));
-        Debug.Log("cube id is ----->" +cubeID);
+        //Debug.Log("cube id is ----->" +cubeID);
         return cubeID;
     }
     public void retSurfParticles()
