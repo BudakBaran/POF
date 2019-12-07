@@ -314,7 +314,7 @@ MonoBehaviour:
   m_selfCollideFilter: 0
   m_fluid: 1
   m_massScale: 1
-  m_drawParticles: 0
+  m_drawParticles: 1
   m_recreateActor: 0
   m_asset: {fileID: 11400000, guid: ab1509697147a1a4699ab87af8c48144, type: 2}
 --- !u!4 &444580674

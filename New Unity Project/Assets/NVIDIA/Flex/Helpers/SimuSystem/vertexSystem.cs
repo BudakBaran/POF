@@ -103,16 +103,16 @@ public class vertexSystem
         if ((particle.x - _bounds.min.x) % _radius == 0) {
             cubeID = (xId--) + (this._intervalx * yId) + (this._intervalx * this._intervaly * zId);
           
-            checkS(cubeID, _indice);
+            checkS(cubeID-1, _indice);
         }
         if ((_bounds.max.y - particle.y) % _radius == 0) {
             cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * zId);
  
-            checkS(cubeID, _indice);
+            checkS(cubeID-1, _indice);
         }
         if ((particle.z - _bounds.min.x) % _radius == 0) {
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
-            checkS(cubeID, _indice);
+            checkS(cubeID-1, _indice);
         }
         cubeID = (xId) + (this._intervalx * (yId - 1)) + (this._intervalx * this._intervaly * (zId - 1));
        
