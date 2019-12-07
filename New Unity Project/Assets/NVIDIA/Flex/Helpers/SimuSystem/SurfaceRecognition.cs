@@ -11,6 +11,7 @@ public class SurfaceRecognition
     {
         
     }
+
     public Vector4[] _particles;
     public vertexSystem.vertexIndex[] _groups;
     Bounds _bounds;
@@ -55,6 +56,7 @@ public class SurfaceRecognition
         gradient *= statcons;
         Vector3 ret = ((particle - neighbour) * gradient)/ (FindDistance(particle, neighbour) * radius);
         return ret;
+
     }
 
     public float FintLaplacianWeight(Vector3 particle, Vector3 neighbour, float radius)
@@ -87,7 +89,7 @@ public class SurfaceRecognition
 
     }
 
-    public int[] findAreaCells(int particleIndice)
+    public int[] findBoundary(int particleIndice)
     {
         float xMax = _particles[particleIndice].x + _radius * 4;
         if (xMax >= _bounds.max.x)
@@ -131,6 +133,9 @@ public class SurfaceRecognition
         
         return a;
     }
+
+
+
     /*public int[] FindNumXYZ(int num, int intervalx, int intervaly)
     {
         int x1 = 0, y1 = 0, z1 = 0, temp;
@@ -151,8 +156,12 @@ public class SurfaceRecognition
         }
         return new int[3] {x1,y1,z1};
     }*/
+
+
+
     public int[] FindAreaCells(Bounds insideCell)
     {
+
         int topLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
         int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
         int topRightForward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.max.z));
