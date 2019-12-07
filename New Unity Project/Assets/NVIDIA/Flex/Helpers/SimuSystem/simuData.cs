@@ -82,21 +82,27 @@ namespace NVIDIA.Flex
             ////////////////////////////////////////////////////////////////////
             Bounds b = new Bounds();
             b = GetBounds();
-            Gizmos.color = Color.red;
+            
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < testDraw.Length; i++)
             {
-                Debug.Log(groups.Length);
-                for(int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
+                if(testDraw[i] > groups.Length)
+                {
+                    Debug.Log(testDraw[i]);
+                    Debug.Log(groups.Length);
+                }
+                for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
                 {
                     if(groups[testDraw[i]].pointIndice[j] != -1)
                     {
+                        Gizmos.color = Color.red;
+                        //Gizmos.DrawSphere(new Vector3(GetParticles()[groups[i].pointIndice[j]].x, GetParticles()[groups[i].pointIndice[j]].y, GetParticles()[groups[i].pointIndice[j]].z), m_actor.container.radius / 3);
                         Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z),m_actor.container.radius / 3);
 
                     }
                 }
             }
-            //Gizmos.DrawWireCube(b.center, b.size);
+            //Gizmos.DrawWireCube(testDraw.center, testDraw.size);
             ////////////////////////////////////////////////////////////////////////////
         }
 

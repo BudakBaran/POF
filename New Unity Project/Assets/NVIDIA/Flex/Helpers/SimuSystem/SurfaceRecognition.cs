@@ -90,64 +90,118 @@ public class SurfaceRecognition
     public int[] findAreaCells(int particleIndice)
     {
         float xMax = _particles[particleIndice].x + _radius * 4;
-        if (xMax > _bounds.max.x)
+        if (xMax >= _bounds.max.x)
         {
             xMax = _bounds.max.x;
         }
 
         float xMin = _particles[particleIndice].x - _radius * 4;
-        if (xMin < _bounds.min.x)
+        if (xMin <= _bounds.min.x)
         {
             xMin = _bounds.min.x;
         }
-            
+
         float yMax = _particles[particleIndice].y + _radius * 4;
-        if (yMax > _bounds.max.y)
+        if (yMax >= _bounds.max.y)
         {
             yMax = _bounds.max.y;
         }
-            
+
         float yMin = _particles[particleIndice].y - _radius * 4;
-        if (yMin < _bounds.min.y)
+        if (yMin <= _bounds.min.y)
         {
             yMin = _bounds.min.y;
         }
-            
+
         float zMax = _particles[particleIndice].z + _radius * 4;
-        if (zMax > _bounds.max.z)
+        if (zMax >= _bounds.max.z)
         {
             zMax = _bounds.max.z;
         }
-            
+
         float zMin = _particles[particleIndice].z - _radius * 4;
-        if (zMin < _bounds.min.z)
+        if (zMin <= _bounds.min.z)
         {
-            zMin = _bounds.max.z;
+            zMin = _bounds.min.z;
         }
-            
+
         Bounds insideCell = new Bounds();
         insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
-        int topLeft = FindID(insideCell.min);
-        int bottomRight = FindID(insideCell.max);
-        int topRight = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
-        //Debug.Log(insideCell.min);
-        //Debug.Log("------"+ topLeft + "-----"+ bottomRight + "-----"+ topRight);
-        return new int[3] { topLeft, bottomRight, topRight };
+        int[] a = FindAreaCells(insideCell);
+        
+        return a;
     }
-    
+    /*public int[] FindNumXYZ(int num, int intervalx, int intervaly)
+    {
+        int x1 = 0, y1 = 0, z1 = 0, temp;
+        if (num > intervalx)
+        {
+            if (num / intervalx > intervaly)
+            {
+                z1 = num / (intervalx * intervaly);
+                temp = num % (intervalx * intervaly);
+            }
+            temp = num % (intervalx * intervaly);
+            y1 = temp / intervalx;
+            x1 = temp;
+        }
+        else
+        {
+            x1 = num;
+        }
+        return new int[3] {x1,y1,z1};
+    }*/
+    public int[] FindAreaCells(Bounds insideCell)
+    {
+        int topLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
+        int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
+        int topRightForward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.max.z));
+        int topLeftForward  = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
+        int bottomRightForward = FindID(new Vector3(insideCell.max.x, insideCell.min.y, insideCell.max.z));
+        int bottomRightBacward  = FindID(new Vector3(insideCell.max.x, insideCell.min.y, insideCell.min.z));
+        int bottomLeftForward  = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.max.z));
+        int bottomLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.min.z));
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
+        int _intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
+        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
+        int tx= (topRightBackward- topLeftBackward)+1, 
+            ty = ((bottomLeftBackward- topLeftBackward) /_intervalx)+1, 
+            tz = ((topRightForward-topRightBackward) /(_intervalx*_intervaly))+1;
+        Debug.Log(tx +"  "+ ty+ " " + tz);
+        int[] areaNums = Enumerable.Repeat(-1, (8+(ty*tx*tz/3))).ToArray();
+        int i = 0, tempNum = topLeftBackward ;
+        Debug.Log(areaNums.Length);
+            for(int k = 0; k < ty; k++)
+            {
+                for (int j = 0; j < tz; j++)
+                {
+                    for (int m = 0; m < tx; m++)
+                    {
+                        areaNums[i] = tempNum+m;
+                        
+                        i++;
+                    };
+                    tempNum += _intervalx;
+                }
+                tempNum = tempNum + (_intervalz * _intervalx);
+            }
+        return areaNums;
+    }
     public int FindID(Vector3 insideCell)
     {
         int cubeID;
-        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
-        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));// y ekseninde kaç küçük küp var hesapla.
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4));
+        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
 
         int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
         int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4));
         int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius * 4));
 
-        // on grid here (x + a(r/8)  === particle.x in some a that occurs so we have to substract 2 value and divide grid size get %)
+            zId = 1;
+        if (yId == 0)
+            yId = 1;
         cubeID = (xId) + (_intervalx * (yId - 1)) + (_intervalx * _intervaly * (zId - 1));
-        //Debug.Log("cube id is ----->" +cubeID);
+    
         return cubeID;
     }
     public void retSurfParticles()
