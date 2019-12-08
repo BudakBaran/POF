@@ -48,8 +48,9 @@ namespace NVIDIA.Flex
         {
             _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3,ref groups);
             _vertexSystem.GroupByCells();
+
             _surfaceRecognition.SetData(_particles, GetBounds(), ref groups, m_actor.container.radius / 3);
-            this.testDraw =  _surfaceRecognition.findAreaCells(0);
+            this.testDraw =  _surfaceRecognition.findBoundary(0);
         }
         public Bounds GetBounds()
         {
@@ -82,24 +83,30 @@ namespace NVIDIA.Flex
             ////////////////////////////////////////////////////////////////////
             Bounds b = new Bounds();
             b = GetBounds();
-            
 
             for (int i = 0; i < testDraw.Length; i++)
             {
-                if(testDraw[i] > groups.Length)
+                /*if(testDraw[i] >= groups.Length)
                 {
-                    Debug.Log(testDraw[i]);
-                    Debug.Log(groups.Length);
-                }
-                for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
-                {
-                    if(groups[testDraw[i]].pointIndice[j] != -1)
-                    {
-                        Gizmos.color = Color.red;
-                        //Gizmos.DrawSphere(new Vector3(GetParticles()[groups[i].pointIndice[j]].x, GetParticles()[groups[i].pointIndice[j]].y, GetParticles()[groups[i].pointIndice[j]].z), m_actor.container.radius / 3);
-                        Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z),m_actor.container.radius / 3);
 
+                    Debug.Log(testDraw[i]);
+
+                }*/
+                if(testDraw[i] != -1)
+                {
+                    for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
+                    {
+
+                        if (groups[testDraw[i]].pointIndice[j] != -1)
+                        {
+                            Gizmos.color = Color.red;
+                            //Gizmos.DrawSphere(new Vector3(GetParticles()[groups[i].pointIndice[j]].x, GetParticles()[groups[i].pointIndice[j]].y, GetParticles()[groups[i].pointIndice[j]].z), m_actor.container.radius / 3);
+                            Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z), m_actor.container.radius / 3);
+
+                        }
                     }
+                    Gizmos.color = Color.blue;
+                    Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
                 }
             }
             //Gizmos.DrawWireCube(testDraw.center, testDraw.size);
