@@ -184,6 +184,7 @@ public class SurfaceRecognition
                 {
                     
                     areaNums[i] = tempNum+m;
+                    Debug.Log("aslkdjaşlksdjsaşlkdj"+_groups.Length);
                     Debug.Log(areaNums[i]);
                     i++;
                 }

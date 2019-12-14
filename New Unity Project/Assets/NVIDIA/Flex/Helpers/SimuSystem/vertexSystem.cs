@@ -10,6 +10,11 @@ public class vertexSystem
     public struct vertexIndex
     {
         public int[] pointIndice;
+        public vertexIndex(int[] pointIndice)
+        {
+           pointIndice = new int[1] { -1 };
+           this.pointIndice = pointIndice;
+        }
     }
 
     private vertexIndex[] _vertices ;
