@@ -1,0 +1,38 @@
+
+/// Firstly write a pdf’s and algorithms inside them as you know 
+firstly we use a some equations in these pdf not all of them.
+ Talk about this stage.
+
+/// Secondly talk about searching problem and 
+how we find a solution for this problem 
+why we use spatial hashing instead of the other hash algorithms. 
+(Some images can be good ask baran not code images).
+
+/// Thirdly talk about our neighbor algorithm and discussion about 
+sphere or cubic usage we did this discussion. 
+(Give an image for neighbor cell ask baran.)
+/// Talk about cell creation way in neighbor and hash algorithm usage.
+
+
+/// fourthly write our cell creation way (If you think you know algorithm
+ you can talk about imaginary cells and imaginary (not storaged) numbers.). 
+A little code will be enough. If you do not ask Baran.
+
+
+/// Ask baran if is there any deficiency or excess 
+in there if you think there is, discuss about them 
+(But you have to think we should not write all of them for second semester.)
+
+/// Lastly, talk about its not a completed, 
+will completed in second semester bla bla bla.
+
+P.S: I think we do not have to talk about
+ all code and diagram staffs.
+
+P.S2: Each case have their own test situations 
+some of them just a math and others just a code.
+P.S3: Ask tests to baran for visualisation
+(Probably I’ll not remember in first half hour).
+
+// kod atma bölümü burası
+
