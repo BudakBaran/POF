@@ -156,25 +156,20 @@ public class SurfaceRecognition
 
     public int[] FindAreaCells(Bounds insideCell)
     {
-        int topLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
-        int topLeftForward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
-        int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
-        int topRightForward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.max.z));
-
-        int bottomRightForward = FindID(new Vector3(insideCell.max.x, insideCell.min.y, insideCell.max.z));
-        int bottomRightBacward  = FindID(new Vector3(insideCell.max.x, insideCell.min.y, insideCell.min.z));
-        int bottomLeftForward  = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.max.z));
-        int bottomLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.min.z));
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
         int _intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
+        int topLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
+        int topLeftForward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
+        int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
+        int bottomLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.min.z));
+        
         int tx= (topRightBackward- topLeftBackward) + 1, 
             ty = ((bottomLeftBackward- topLeftBackward) /_intervalx) + 1, 
             tz = ((topLeftForward-topLeftBackward) /(_intervalx*_intervaly))+1;
+        
         int[] areaNums = Enumerable.Repeat(-1, (9+((ty*tx*tz)))).ToArray();
         int i = 0, tempNum = topLeftBackward ;
-
-        Debug.Log("----"+tx+"-----"+ty+"-----"+tz);
      
         for (int k = 0; k < ty; k++)
         {
