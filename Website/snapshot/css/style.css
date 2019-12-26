@@ -9829,3 +9829,100 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+  .delay2{
+    opacity:0;
+    animation: fadein2 2s forwards;
+    animation-delay: 3s;
+
+    -moz-animation: fadein2 2s forwards; /* Firefox */
+    -moz-animation-delay:3s;
+
+    -webkit-animation: fadein2 2s forwards; /* Safari and Chrome */
+    -webkit-animation-delay:3s;
+
+    -o-animation: fadein2 2s forwards;
+    -o-animation-delay:3s;
+  }
+  .delay {
+    opacity:0;
+    animation: fadein 3s forwards;
+    animation-delay: 1s;
+
+    -moz-animation: fadein 3s forwards; /* Firefox */
+    -moz-animation-delay:1s;
+
+    -webkit-animation: fadein 3s forwards; /* Safari and Chrome */
+    -webkit-animation-delay:1s;
+
+    -o-animation: fadein 3s forwards;
+    -o-animation-delay: 1s ;
+
+    }
+@keyframes fadein2 {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-moz-keyframes fadein2 { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein2 { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein2 { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
