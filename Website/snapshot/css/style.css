@@ -9926,3 +9926,7 @@ textarea.form-control {
         opacity:1;
     }
 }
+
+.overlay{
+  opacity: 0.44 !important;
+}
