@@ -9832,30 +9832,30 @@ textarea.form-control {
   .delay2{
     opacity:0;
     animation: fadein2 2s forwards;
-    animation-delay: 3s;
+    animation-delay: 2s;
 
     -moz-animation: fadein2 2s forwards; /* Firefox */
-    -moz-animation-delay:3s;
+    -moz-animation-delay:2s;
 
     -webkit-animation: fadein2 2s forwards; /* Safari and Chrome */
-    -webkit-animation-delay:3s;
+    -webkit-animation-delay:2s;
 
     -o-animation: fadein2 2s forwards;
-    -o-animation-delay:3s;
+    -o-animation-delay:2s;
   }
   .delay {
     opacity:0;
-    animation: fadein 3s forwards;
-    animation-delay: 1s;
+    animation: fadein 2s forwards;
+    animation-delay: 0.5s;
 
-    -moz-animation: fadein 3s forwards; /* Firefox */
-    -moz-animation-delay:1s;
+    -moz-animation: fadein 2s forwards; /* Firefox */
+    -moz-animation-delay:0.5s;
 
-    -webkit-animation: fadein 3s forwards; /* Safari and Chrome */
-    -webkit-animation-delay:1s;
+    -webkit-animation: fadein 2s forwards; /* Safari and Chrome */
+    -webkit-animation-delay:0.5s;
 
-    -o-animation: fadein 3s forwards;
-    -o-animation-delay: 1s ;
+    -o-animation: fadein 2s forwards;
+    -o-animation-delay: 0.5s ;
 
     }
 @keyframes fadein2 {
