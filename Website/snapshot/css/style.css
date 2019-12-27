@@ -9930,3 +9930,21 @@ textarea.form-control {
 .overlay{
   opacity: 0.44 !important;
 }
+
+.subheading2 {
+    line-height: .8;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 600;
+    color: #9d8f8f;
+}
+
+.subheading3 {
+    line-height: .8;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 600;
+    color: #cbcbcb;
+}
