@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+
+  	<nav id="navbar" class="navbar">
+		  <ul class="nav-menu">
+		    <li>
+		      <a data-scroll="home" href="#home" class="dot active">
+		        <span>Cover</span>
+		      </a>
+		    </li>
+		    <li>
+		      <a data-scroll="about" href="#about" class="dot">
+		        <span>Aim</span>
+		      </a>
+		    </li>
+		    <li>
+		      <a data-scroll="services" href="#services" class="dot">
+		        <span>Implementation</span>
+		      </a>
+		    </li>
+		    <li>
+		      <a data-scroll="testimonial" href="#testimonial" class="dot">
+		        <span>Conclusion</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+		<!-- End Nav Section -->
+
+		<!-- Start Home Section -->
+	  <section id="home" class="hero-wrap delay js-fullheight" style="background-image: url(images/back5.jpg);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-lg-7 d-flex align-items-center">
+          	<div class="text text-center delay2">
+          		<h1 class="logo mb-10"><a href="index.html"><img class="img-about" src="images/wave.png"><h3 class="mb-0"><em>POF</em></h3><h5><small>Perfomance Optimized Fluids</small></h5></a></h1>
+		  				<h6 class="mb-4 txtwhite">Baran Budak, Cihanser Çalışkan, İsmail Mekan <br>Supervisor: Dr. Gizem Kayar</h6>
+		  				<p class="mb-4 txtwhite">System that does surface reconstruction in particle-based fluid simulation. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<!-- End Home Section -->
+
+		<!-- Start About Me Section -->
+		<section class="ftco-about img ftco-section" id="about">
+    	<div class="container">
+    		<div class="row d-flex no-gutters">
+    			<div class="col-md-6 col-lg-6 d-flex">
+    				<div class="img-about img d-flex align-items-stretch">
+    					<div class="overlay"></div>
+	    				<div  class="img img-video d-flex align-self-stretch align-items-center" style="background-image:url(images/img3.png);">
+	    					
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-6 col-lg-6 pl-md-5">
+	          <div class=" ftco-animate">
+	            <h2 class="mb-4 subheading2">AIM</h2>
+	            <p class="text-justify">The main goal of the project researches whether there is a way to enhance fluid simulation. Increasing the efficiency and performance of an existing particle-based fluid simulations' surface reconstruction is a major goal. We aim to achieve these goals by implementing a variety of methods to the POF system such as using special structures to find, store particles and visualize it by using various methods like the Marching cubes.</p>
+
+	            <div class="counter-wrap ftco-animate d-flex my-md-4">
+	              <div class="text">
+	              	<p class="mb-4">
+		         
+	                </p>
+	              </div>
+		          </div>
+		          <div class="d-flex w-100 pt-2 pb-2">
+		            <div class="img img-about-2 mr-2" style="background-image: url(images/img1.png);"></div>
+		            <div class="img img-about-2 ml-2" style="background-image: url(images/img2.jpg);"></div>
+		          </div>
+		          	<h2 class="mb-4 mt-3 subheading2">Objectives</h2>
+	            	<p class="text-justify">Many of particle-based fluid simulations today require high quality, expensive computers. In other respects in simulations we have to get closer to real-life on every aspect, In accordance with this purpose, the main objective of this project is making research and implement this research results on particle-based fluid simulations. The project focused on implement surface reconstruction of simulation in this way we research and implement various methods based on three subbranch algorithms; fast quick access to data (hash), visualization (marching cubes) and surface recognition methods.
+In conclusion, our projects' major objectives are making research and implement better ways of surface reconstruction on particle-based fluid simulations.</p>
+	          </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+		<!-- End About Me Section -->
+
+		<!-- Start Services Section -->
+		<section id="services" class="ftco-section">
+		  <div class="container">
+		  	<div class="row">
+		  		<div class="col-md-9">
+		  			<div class="row">
+				  		<div class="col-md-12 ftco-animate pb-5">
+		            <h2 class="mb-4 subheading2">Implementation</h2>
+		            <p>Hasher makes access easier to particles. Surface particles are found by applying algorithm in [AIA12] in order to draw vertices of surface particles. Vertices being draw by benefiting from Marching cubes algorithm [WH87].<br><br> Implementation part consists of three parts:</p>
+		          </div>
+				  	</div>
+		  			<div class="row">
+		        	<div class="col-md-4">
+		        		<div class="media block-6 services d-block align-items-stretch ftco-animate">
+		              <div class="">
+		                <h5 class="subheading3 mb-3">Hashing</h5>
+		                <p class="text-justify"> Hashing is a technique which represents particles in a 3 dimensional space converted as 1D hash table that allow  very fast access on particles in the 3 dimensional space domain.</p>
+		              </div>
+		            </div> 
+		        	</div>
+		        	<div class="col-md-4">
+		        		<div class="media block-6 services align-items-stretch d-block ftco-animate">
+		              <div class="">
+		                <h5 class="subheading3 mb-3">Surface Particles</h5>
+		                <p  class="text-justify">This algorithm detects surface particles and the cells that particles are belongs. We can discard cells that are not used and focus on the surface particles. System works more efficiently and better performance obtained.</p>
+		              </div>
+		            </div> 
+		        	</div>
+		        	<div class="col-md-4">
+		        		<div class="media block-6 services d-block align-items-stretch ftco-animate">
+		              <div class="">
+		                <h5 class="subheading3 mb-3 subheading">Marching Cubes</h5>
+		                <p  class="text-justify">  The algorithm is used for extracting a polygonal mesh of an isosurface from a 3D discrete scalar field. Marching cubes take the vertex data and initialize to draw by triangulation by considering 16 cases.</p>
+		              </div>
+		            </div> 
+		        	</div>
+	        	</div>
+	        </div>
+	        <div class="col-md-3 d-flex align-items-stretch">
+	        	<div class="img w-100" style="background-image: url(images/march1.png);
+	        								  background-size: contain;"></div>
+	        </div>
+        </div>
+        <div class="row pt-md-5">
+        	<div class="col-md-7 order-md-last py-md-5">
+        		<div class="row">
+					    <div class="p-md-4 mt-4">
+					    	<div class="col-md-10 ftco-animate align-items-stretch text-justify">
+					    		<h2 class="mb-4 subheading2 text-justify">EVALUATION</h2>
+						    	<p>A fluid simulation system having a difficulty to simulate too many particles. Our POF system increases the performance and simulation can handle more particles. POF system affects memory efficiency so that simulation requires less memory.  The spatial hash algorithm has a huge benefit in memory efficiency. POF system makes higher frame rates possible. Surface particle recognition eliminates the cells that are not made a calculation. Surface particle cells increase the performance by discarding inactive cells. Performance and efficiency are important elements of particle-based fluid simulation.</p>
+					    	</div>
+					    </div>
+					  </div>
+					</div>
+					<div class="col-md-5 d-flex align-items-stretch">
+	        	<div class="img w-100" style="background-image: url(images/bunny1.png);"></div>
+	        </div>
+		  	</div>
+		  </div>
+		</section>  
+		<!-- End Services Section -->
+
+		<!-- Start Testimonials Section -->
+
+		<section class="ftco-section text-center testimony-section" id="testimonial">
+			<div class="container">
+				<div class="row justify-content-between mb-5 pb-3">
+          <div class="col-md-6 heading-section ftco-animate">
+          	<row>
+	          	<span class="subheading2 align-items-stretch text-justify">Conclusion</span>
+	          	<br>
+	            <p>The massive amounts of particles can be a computational hardship for the computer. We implement various methods to get better results by doing research. Our project focuses on catalysing computational difficulties by increasing the performance and efficiency. Project should make easier to simulate with higher quantities of particles or getting better results with the same number of particles by using combination of hash algorithm, surface particle recognition algorithm and marching cubes algorithm.</p>
+	        </row>
+            <row> <img class="img-about p-5"  style="height: 46%;" src="images/yu.png"></row>
+          </div>
+          <div class="col-md-6 heading-section align-items-stretch ftco-animate">
+          	<span class="subheading2 list-unstyled">References</span>
+          	<ul class="text-justify" style="text-align: left;">
+      			<li>[AIA12] Akinci, G., Ihmsen, M., Akinci, N. and Teschner, M. (2012). Parallel Surface Reconstruction for Particle‐Based Fluids. Computer Graphics Forum, 31, 1797-1809.</li>
+      			<li>[BP94] Paul Bourke 1994, Marching Cubes, viewed 1 December 2019, http://paulbourke.net/geometry/polygonise/</li>
+      			<li>[MCG03] M. Müller, D. Charypar, and M. Gross (2003). Particle-based fluid simulation for interactive applications. In Proceedings of the 2003 ACM SIGGRAPH/Eurographics Symposium on Computer Animation (SCA ’03), 154–159.</li>
+      			<li>[PTB03] Premžoe, S. , Tasdizen, T. , Bigler, J. , Lefohn, A. and Whitaker, R. T. (2003). Particle‐Based Simulation of Fluids. Computer Graphics Forum, 22, 401-410.</li>
+      			<li>[TH03] Teschner, M., Heidelberger, B., Müller, M., Pomerantes, D., and Gross, M.H. (2003). Optimized Spatial Hashing for Collision Detection of Deformable Objects. VMV.</li>
+      			<li>[WH87] William E. Lorensen and Harvey E. Cline. (1987). Marching cubes: A high resolution 3D surface construction algorithm. ACM SIGGRAPH Computer Graphics. 21, 163-169. </li>
+      			<li>[ZB05] Zhu, Y., & Bridson, R. (2005). Animating sand as a fluid. (New York, NY, USA, 2005) ACM Trans. Graph., 24, 965-972. </li>
+
+    		</ul>
+          </div>
+        </div>
+			</div>
+		</section>
+
+		<!-- Start Contact Section -->
+		<!-- End Contact Section -->
+
+
+		<!-- Start Footer Section -->
+		<footer class="ftco-footer py-5">
+		  <div class="container text-center">
+		    <div class="row">
+          <div class="col-md-12 text-center">
+          </div>
+        </div>
+		  </div>
+		</footer>
+		<!-- End Footer Section -->
+   
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
