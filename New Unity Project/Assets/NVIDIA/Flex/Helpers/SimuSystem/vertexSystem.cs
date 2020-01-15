@@ -107,20 +107,26 @@ public class vertexSystem
         // on grid here (x + a(r/8)  === particle.x in some a that occurs so we have to substract 2 value and divide grid size get %)
         if ((particle.x - _bounds.min.x) % _radius == 0) {
             cubeID = (xId--) + (this._intervalx * yId) + (this._intervalx * this._intervaly * zId);
-          
             checkS(cubeID-1, _indice);
+
+            cubeID = (xId) + (this._intervalx * yId) + (this._intervalx * this._intervaly * zId);
+            checkS(cubeID - 1, _indice);
         }
         if ((_bounds.max.y - particle.y) % _radius == 0) {
             cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * zId);
- 
             checkS(cubeID-1, _indice);
+
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * zId);
+            checkS(cubeID - 1, _indice);
+
         }
         if ((particle.z - _bounds.min.x) % _radius == 0) {
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
             checkS(cubeID-1, _indice);
+
         }
+
         cubeID = (xId) + (this._intervalx * (yId - 1)) + (this._intervalx * this._intervaly * (zId - 1));
-       
         checkS(cubeID-1, _indice);
 
     }
