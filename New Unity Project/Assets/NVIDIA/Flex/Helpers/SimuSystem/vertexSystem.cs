@@ -95,7 +95,40 @@ public class vertexSystem
         this._vertices[vertice].pointIndice = Enumerable.Repeat(-1, 64).ToArray();
         this._vertices[vertice].pointIndice[0] = particleIndex;
     }
- 
+
+    ////////////////////////////////// GUIDE STARTS HERE (FIND ID NEW VERSİON)///////////////////////////////
+    
+     void findRealId(Vector4 particle, float _length, int _indice)
+    {
+        int cubeID;
+
+        int xId = (int)Math.Ceiling((particle.x - _bounds.min.x) / _length);
+        int yId = (int)Math.Ceiling((_bounds.max.y - particle.y) / _length);
+        int zId = (int)Math.Ceiling((particle.z - _bounds.min.z) / _length);
+        float cubeX = (particle.x - _bounds.min.x) % _radius;
+        float cubeY = (_bounds.max.y - particle.y) % _radius;
+        float cubeZ = (particle.z - _bounds.min.z) % _radius;
+
+
+        // Five errors in here for fill to fix
+        if (cubeX == 0 && cubeY == 0 && cubeZ == 0)
+        {
+
+        } else if (cubeX == 0 && cubeY)
+        {
+
+        }else if ()
+        {
+
+        }else if ()
+        {
+
+        }
+    }
+
+
+
+
     void findID(Vector4 particle, float _length, int _indice) // x,y,z isimlerinde bir particle position datamız var.
     {
         int cubeID;
@@ -105,6 +138,12 @@ public class vertexSystem
         int zId = (int)Math.Ceiling((particle.z - _bounds.min.z) / _length);
 
         // on grid here (x + a(r/8)  === particle.x in some a that occurs so we have to substract 2 value and divide grid size get %)
+        /////////////////////////////// GUIDE LINE ON TOP///////////////////////////////
+        ////////////////////////////////// GUIDE ON ABOVE (FIND ID NEW VERSİON)///////////////////////////////
+        ////////////////////////////////// GUIDE ON ABOVE ///////////////////////////////
+        ////////////////////////////////// GUIDE ON ABOVE ///////////////////////////////
+        ////////////////////////////////// GUIDE ON ABOVE ///////////////////////////////
+        ////////////////////////////////// GUIDE ON ABOVE ///////////////////////////////
         if ((particle.x - _bounds.min.x) % _radius == 0) {
             cubeID = (xId--) + (this._intervalx * yId) + (this._intervalx * this._intervaly * zId);
             checkS(cubeID-1, _indice);
@@ -120,8 +159,8 @@ public class vertexSystem
             checkS(cubeID - 1, _indice);
 
         }
-        if ((particle.z - _bounds.min.x) % _radius == 0) {
-            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
+        if ((particle.z - _bounds.min.z) % _radius == 0) {
+            cubeID = (xId) + (this._intervalz * (yId)) + (this._intervalz * this._intervaly * (zId--));
             checkS(cubeID-1, _indice);
 
         }
