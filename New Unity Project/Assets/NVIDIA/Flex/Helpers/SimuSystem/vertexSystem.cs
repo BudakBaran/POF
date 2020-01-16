@@ -119,6 +119,7 @@ public class vertexSystem
             cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
             checkS(cubeID - 1, _indice);
 
+<<<<<<< Updated upstream
             // X is +
             cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
             checkS(cubeID - 1, _indice);
@@ -171,6 +172,8 @@ public class vertexSystem
             checkS(cubeID - 1, _indice);
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
             checkS(cubeID - 1, _indice);
+=======
+>>>>>>> Stashed changes
         }
     }
 
