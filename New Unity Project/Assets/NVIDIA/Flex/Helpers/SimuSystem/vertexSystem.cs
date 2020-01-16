@@ -88,7 +88,6 @@ public class vertexSystem
         }
     }
 
-
     public void ifDoesNotExist(int vertice, int particleIndex)
     {
         // create a object fill it and send
@@ -96,9 +95,7 @@ public class vertexSystem
         this._vertices[vertice].pointIndice[0] = particleIndex;
     }
 
-    ////////////////////////////////// GUIDE STARTS HERE (FIND ID NEW VERSİON)///////////////////////////////
-    
-     void findRealId(Vector4 particle, float _length, int _indice)
+     void findId(Vector4 particle, float _length, int _indice)
     {
         int cubeID;
 
@@ -109,25 +106,76 @@ public class vertexSystem
         float cubeY = (_bounds.max.y - particle.y) % _radius;
         float cubeZ = (particle.z - _bounds.min.z) % _radius;
 
-
         // Five errors in here for fill to fix
         if (cubeX == 0 && cubeY == 0 && cubeZ == 0)
         {
+            // X is -
+            cubeID = (xId--) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId--) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
 
-        } else if (cubeX == 0 && cubeY)
+            // X is +
+            cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+        }
+        else if (cubeX == 0 && cubeY == 0)
         {
+            // X is -
+            cubeID = (xId--) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
 
-        }else if ()
+            // X is +
+            cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+
+        }
+        else if (cubeX == 0 && cubeZ == 0)
         {
+            // X is -
+            cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId)--);
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
 
-        }else if ()
+            // X is +
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
+        }
+        else if (cubeY == 0 && cubeZ == 0)
         {
+            // Y is -
+            cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
 
+            // Y is +
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
+            checkS(cubeID - 1, _indice);
+            cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
+            checkS(cubeID - 1, _indice);
         }
     }
 
 
-
+    /*
 
     void findID(Vector4 particle, float _length, int _indice) // x,y,z isimlerinde bir particle position datamız var.
     {
@@ -169,6 +217,7 @@ public class vertexSystem
         checkS(cubeID-1, _indice);
 
     }
+    */
 
-    SurfaceRecognition a = new SurfaceRecognition();
+    SurfaceRecognition a = new SurfaceRecognition(); // ???
 }
