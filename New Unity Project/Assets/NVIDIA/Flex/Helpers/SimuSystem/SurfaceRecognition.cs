@@ -9,7 +9,7 @@ public class SurfaceRecognition
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public Vector4[] _particles;
@@ -34,26 +34,26 @@ public class SurfaceRecognition
         float cons = 8 / (float)(Math.PI);
         return cons;
     }
-   public float FindGradientWeight(Vector3 particle, Vector3 neighbour, float radius)
+    public float FindGradientWeight(Vector3 particle, Vector3 neighbour, float radius)
     {
         //////////////// IF RETURN NEGATİVE ERROR
         float statcons = FindConstant(radius);
         float q = FindDistance(particle, neighbour) / radius;
         float gradient = 0;
-        if( 0 <= q && q < 0.5)
+        if (0 <= q && q < 0.5)
         {
             gradient = (-2 * q) + (3 * q * q / 2);
 
 
-        }else if ( 0.5 <= q && q <= 1 )
+        } else if (0.5 <= q && q <= 1)
         {
             gradient = (-1 / 2) * (float)Math.Pow((2 - q), 2);
         }
-        else if(q>1)
+        else if (q > 1)
         {
             gradient = 0;
         }
-        gradient *= (statcons/ (float)Math.Pow(radius,3));
+        gradient *= (statcons / (float)Math.Pow(radius, 3));
         return gradient;
 
     }
@@ -64,9 +64,9 @@ public class SurfaceRecognition
         int k = 0;
         for (int i = 0; i < areaParticles.Length; i++)
         {
-            for(int j = 0; j < _groups[areaParticles[i]].pointIndice.Length; j++)
+            for (int j = 0; j < _groups[areaParticles[i]].pointIndice.Length; j++)
             {
-                if(_groups[areaParticles[i]].pointIndice[j] != -1)
+                if (_groups[areaParticles[i]].pointIndice[j] != -1)
                 {
                     neighbours[k] = _groups[areaParticles[i]].pointIndice[j];
                     k++;
@@ -112,37 +112,37 @@ public class SurfaceRecognition
     public int[] findBoundary(int particleIndice)
     {
         float xMax = _particles[particleIndice].x + _radius * 5;
-        if (xMax >= _bounds.max.x)
+        if (xMax > _bounds.max.x)
         {
             xMax = _bounds.max.x;
         }
 
         float xMin = _particles[particleIndice].x - _radius * 5;
-        if (xMin <= _bounds.min.x)
+        if (xMin < _bounds.min.x)
         {
             xMin = _bounds.min.x;
         }
 
         float yMax = _particles[particleIndice].y + _radius * 5;
-        if (yMax >= _bounds.max.y)
+        if (yMax > _bounds.max.y)
         {
             yMax = _bounds.max.y;
         }
 
         float yMin = _particles[particleIndice].y - _radius * 5;
-        if (yMin <= _bounds.min.y)
+        if (yMin < _bounds.min.y)
         {
             yMin = _bounds.min.y;
         }
 
         float zMax = _particles[particleIndice].z + _radius * 5;
-        if (zMax >= _bounds.max.z)
+        if (zMax > _bounds.max.z)
         {
             zMax = _bounds.max.z;
         }
 
         float zMin = _particles[particleIndice].z - _radius * 5;
-        if (zMin <= _bounds.min.z)
+        if (zMin < _bounds.min.z)
         {
             zMin = _bounds.min.z;
         }
@@ -150,7 +150,7 @@ public class SurfaceRecognition
         Bounds insideCell = new Bounds();
         insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
         int[] a = FindAreaCells(insideCell);
-        
+
         return a;
     }
 
@@ -159,35 +159,35 @@ public class SurfaceRecognition
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
         int _intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
-        int topLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
+        int topLeftBackward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
         int topLeftForward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
         int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
-        int bottomLeftBackward  = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.min.z));
-        
-        int tx= (topRightBackward- topLeftBackward) + 1, 
-            ty = ((bottomLeftBackward- topLeftBackward) /_intervalx) + 1, 
-            tz = ((topLeftForward-topLeftBackward) /(_intervalx*_intervaly))+1;
-        
-        int[] areaNums = Enumerable.Repeat(-1, (9+((ty*tx*tz)))).ToArray();
-        int i = 0, tempNum = topLeftBackward ;
-     
+        int bottomLeftBackward = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.min.z));
+
+        int tx = (topRightBackward - topLeftBackward) + 1,
+            ty = ((bottomLeftBackward - topLeftBackward) / _intervalx) + 1,
+            tz = ((topLeftForward - topLeftBackward) / (_intervalx * _intervaly)) + 1;
+
+        int[] areaNums = Enumerable.Repeat(-1, (9 + ((ty * tx * tz)))).ToArray();
+        int i = 0, tempNum = topLeftBackward;
+
         for (int k = 0; k < ty; k++)
         {
             for (int j = 0; j <= tz; j++)
             {
                 for (int m = 0; m < tx; m++)
                 {
-                    
-                    areaNums[i] = tempNum+m;
-                    Debug.Log("aslkdjaşlksdjsaşlkdj"+_groups.Length);
-                    Debug.Log(areaNums[i]);
+
+                    areaNums[i] = tempNum + m;
+                    //Debug.Log("aslkdjaşlksdjsaşlkdj"+_groups.Length);
+                    //Debug.Log(areaNums[i]);
                     i++;
                 }
                 tempNum += (_intervalx * _intervaly);
             }
-            tempNum = areaNums[0] + (_intervalx*(k+1)); 
+            tempNum = areaNums[0] + (_intervalx * (k + 1));
         }
-        Debug.Log("i is ->>>>" + i + "size is ---->" + areaNums.Length);
+        //Debug.Log("i is ->>>>" + i + "size is ---->" + areaNums.Length);
         return areaNums;
     }
     public int FindID(Vector3 insideCell)
@@ -197,13 +197,13 @@ public class SurfaceRecognition
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
 
         int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
-        int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4));
-        int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius * 4));
-        if (zId == 0)
-            zId = 1;
-        if (yId == 0)
-            yId = 1;
-        cubeID = (xId) + (_intervalx * (yId - 1)) + (_intervalx * _intervaly * (zId - 1));
+        int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4)) ;
+        int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius * 4)) ;
+        if (xId == 0 || yId == 0 || zId == 0)
+        {
+            Debug.Log("under zero");
+        }
+        cubeID = (xId--) + (_intervalx * (yId--)) + (_intervalx * _intervaly * (zId--));
     
         return cubeID;
     }

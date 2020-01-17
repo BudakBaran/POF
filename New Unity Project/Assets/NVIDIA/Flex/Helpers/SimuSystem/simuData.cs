@@ -94,6 +94,8 @@ namespace NVIDIA.Flex
                 }*/
                 if(testDraw[i] != -1)
                 {
+                    Gizmos.color = Color.blue;
+                    Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
                     for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
                     {
 
@@ -105,8 +107,7 @@ namespace NVIDIA.Flex
 
                         }
                     }
-                    Gizmos.color = Color.blue;
-                    Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
+                    
                 }
             }
             //Gizmos.DrawWireCube(testDraw.center, testDraw.size);
