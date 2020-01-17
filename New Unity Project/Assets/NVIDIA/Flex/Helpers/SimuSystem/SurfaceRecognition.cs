@@ -193,8 +193,8 @@ public class SurfaceRecognition
     public int FindID(Vector3 insideCell)
     {
         int cubeID;
-        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4));
-        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4))-1;
+        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4))-1;
 
         int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
         int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4)) ;
