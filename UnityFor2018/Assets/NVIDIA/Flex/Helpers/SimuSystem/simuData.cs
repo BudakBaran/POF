@@ -11,7 +11,8 @@ namespace NVIDIA.Flex
         int length;
         public static Vector4[] _particles = new Vector4[125001];
         public static vertexSystem.vertexIndex[] groups;
-        int[] testDraw;
+        //int[]
+        Bounds testDraw;
         #region Messages
         void OnEnable()
         {
@@ -84,15 +85,16 @@ namespace NVIDIA.Flex
             Bounds b = new Bounds();
             b = GetBounds();
 
-            for (int i = 0; i < testDraw.Length; i++)
+            /*for (int i = 0; i < testDraw.Length; i++)
             {
+            */
                 /*if(testDraw[i] >= groups.Length)
                 {
 
                     Debug.Log(testDraw[i]);
 
                 }*/
-                if(testDraw[i] != -1)
+                /*if(testDraw[i] != -1)
                 {
                     Gizmos.color = Color.blue;
                     Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
@@ -109,8 +111,9 @@ namespace NVIDIA.Flex
                     }
                     
                 }
-            }
-            //Gizmos.DrawWireCube(testDraw.center, testDraw.size);
+            }*/
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(testDraw.center, testDraw.size);
             ////////////////////////////////////////////////////////////////////////////
         }
 

@@ -59,7 +59,7 @@ public class SurfaceRecognition
     }
     public void FindNeighParticles(int particleId)
     {
-        int[] areaParticles = findBoundary(particleId);
+        /*int[] areaParticles = findBoundary(particleId);
         int[] neighbours = Enumerable.Repeat(-1, 64).ToArray();
         int k = 0;
         for (int i = 0; i < areaParticles.Length; i++)
@@ -73,7 +73,7 @@ public class SurfaceRecognition
                 }
             }
         }
-        FindSurfaceParticle(particleId, neighbours);
+        FindSurfaceParticle(particleId, neighbours);*/
     }
     public void FindSurfaceParticle(int particleId, int[] neighParticles)
     {
@@ -109,7 +109,8 @@ public class SurfaceRecognition
 
     }*/
 
-    public int[] findBoundary(int particleIndice)
+        //int[]
+    public Bounds findBoundary(int particleIndice)
     {
         float xMax = _particles[particleIndice].x + _radius * 5;
         if (xMax > _bounds.max.x)
@@ -149,12 +150,14 @@ public class SurfaceRecognition
 
         Bounds insideCell = new Bounds();
         insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
-        int[] a = FindAreaCells(insideCell);
+        Bounds a = FindAreaCells(insideCell);
 
         return a;
     }
 
-    public int[] FindAreaCells(Bounds insideCell)
+    //int[]
+
+    public Bounds  FindAreaCells(Bounds insideCell)
     {
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
         int _intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
@@ -188,13 +191,15 @@ public class SurfaceRecognition
             tempNum = areaNums[0] + (_intervalx * (k + 1));
         }
         //Debug.Log("i is ->>>>" + i + "size is ---->" + areaNums.Length);
-        return areaNums;
+
+        return insideCell;
+        //return areaNums;
     }
     public int FindID(Vector3 insideCell)
     {
         int cubeID;
-        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4))-1;
-        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4))-1;
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4));
+        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
 
         int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
         int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4)) ;
