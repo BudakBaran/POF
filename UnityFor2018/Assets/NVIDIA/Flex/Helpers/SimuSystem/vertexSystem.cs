@@ -105,7 +105,6 @@ public class vertexSystem
         float cubeX = (particle.x - _bounds.min.x) % _radius * 4;
         float cubeY = (_bounds.max.y - particle.y) % _radius * 4;
         float cubeZ = (particle.z - _bounds.min.z) % _radius * 4;
-
         // Five errors in here for fill to fix
         if (cubeX == 0 && cubeY == 0 && cubeZ == 0 )
         {

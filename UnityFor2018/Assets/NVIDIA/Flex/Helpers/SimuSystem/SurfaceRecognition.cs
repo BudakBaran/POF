@@ -160,7 +160,6 @@ public class SurfaceRecognition
     public int[] FindAreaCells(Bounds insideCell)
     {
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
-        int _intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
         int topLeftBackward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
         int topLeftForward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
@@ -176,7 +175,7 @@ public class SurfaceRecognition
 
         for (int k = 0; k < ty; k++)
         {
-            for (int j = 0; j <= tz; j++)
+            for (int j = 0; j < tz; j++)
             {
                 for (int m = 0; m < tx; m++)
                 {
@@ -203,10 +202,22 @@ public class SurfaceRecognition
         int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
         int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4));
         int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius * 4));
-        if (xId == 0 || yId == 0 || zId == 0)
+        /*if (xId == 0 || yId == 0 || zId == 0)
         {
+            if(xId == 0)
+            {
+                xId++;
+            }
+            if(yId == 0)
+            {
+                yId++;
+            }
+            if (zId == 0)
+            {
+                zId++;
+            }
             Debug.Log("under zero");
-        }
+        }*/
         cubeID = (xId) + (_intervalx * (yId)) + (_intervalx * _intervaly * (zId));
     
         return cubeID;
