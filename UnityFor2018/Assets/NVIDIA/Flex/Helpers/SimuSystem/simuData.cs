@@ -121,8 +121,14 @@ namespace NVIDIA.Flex
                     
                 }
             }
-            //Gizmos.color = Color.red;
-            //Gizmos.DrawWireCube(testDraw.center, testDraw.size);
+            testDraw = _surfaceRecognition.findBoundary(0);
+
+            Bounds cihan = new Bounds();
+            //cihan = sendInsideCell();
+
+            cihan = _surfaceRecognition.GetCihan();
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(cihan.center, cihan.size);
             ////////////////////////////////////////////////////////////////////////////
         }
 

@@ -15,6 +15,8 @@ public class SurfaceRecognition
     public Vector4[] _particles;
     public vertexSystem.vertexIndex[] _groups;
     Bounds _bounds;
+    Bounds _cihanbound;
+
     float _radius;
     public void SetData(Vector4[] particles, Bounds bounds, ref vertexSystem.vertexIndex[] groups, float radius)
     {
@@ -153,11 +155,29 @@ public class SurfaceRecognition
 
         int[] a = FindAreaCells(insideCell);
         
+        //Setter
+        this._cihanbound = insideCell;
+        int[] x = FindAreaCells(_cihanbound);
+
+        //Getter
+
+
         return a;
     }
 
-    //int[]
+    //int[],
 
+        //  SETTER AND GETTER
+
+        public void SetCihan(Bounds _cihanbound)
+        {
+            this._cihanbound = _cihanbound;
+        }
+        
+        public Bounds GetCihan()
+        {
+            return _cihanbound;
+        }
     public int[] FindAreaCells(Bounds insideCell)
     {
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.

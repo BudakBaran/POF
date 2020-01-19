@@ -12,12 +12,12 @@ public class vertexSystem
         public int[] pointIndice;
         public vertexIndex(int[] pointIndice)
         {
-           pointIndice = new int[1] { -1 };
-           this.pointIndice = pointIndice;
+            pointIndice = new int[1] { -1 };
+            this.pointIndice = pointIndice;
         }
     }
 
-    private vertexIndex[] _vertices ;
+    private vertexIndex[] _vertices;
     // Used for mathematical calculations and setting datas to vertex point
     // always get data change data
     // (find a vertex data from 3d surface)
@@ -42,14 +42,14 @@ public class vertexSystem
         }
     }
 
-    public void SetData(int[] indices, Vector4[] particles, Bounds bounds, float radius,ref vertexIndex[] groups)
+    public void SetData(int[] indices, Vector4[] particles, Bounds bounds, float radius, ref vertexIndex[] groups)
     {
         // it comes from simuData class
         _indices = indices;
         _particles = particles;
         _bounds = bounds;
         _radius = radius;
-        
+
         this._intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
         this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));// y ekseninde kaç küçük küp var hesapla.
         this._intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
@@ -59,34 +59,30 @@ public class vertexSystem
 
     public void checkS(int vertice, int particleIndex)
     {
-        
+
         if (this._vertices[vertice].pointIndice == null)
         {
-          
+
             ifDoesNotExist(vertice, particleIndex);
         }
         else
         {
-            
+
             ifExist(vertice, particleIndex);
         }
     }
     public void ifExist(int vertex, int point)
     {
         // if found returns index on list, not found returns -1
-        int  i= 0, check = 0;
-        if(i > 200)
+        int i = 0, check = 0;
+        while (this._vertices[vertex].pointIndice[i] != -1 && i < 63)
         {
-            Debug.Log(this._vertices[vertex].pointIndice.Length);
-        }
-        while (this._vertices[vertex].pointIndice[i] != -1 && i < 200)
-        {
-            
+
             if (this._vertices[vertex].pointIndice[i] == point)
                 check = 1;
             i++;
         }
-        if(check != 1)
+        if (check != 1)
         {
             this._vertices[vertex].pointIndice[i] = point;
         }
@@ -95,11 +91,11 @@ public class vertexSystem
     public void ifDoesNotExist(int vertice, int particleIndex)
     {
         // create a object fill it and send
-        this._vertices[vertice].pointIndice = Enumerable.Repeat(-1, 200).ToArray();
+        this._vertices[vertice].pointIndice = Enumerable.Repeat(-1, 64).ToArray();
         this._vertices[vertice].pointIndice[0] = particleIndex;
     }
 
-     void findID(Vector4 particle, float _length, int _indice)
+    void findID(Vector4 particle, float _length, int _indice)
     {
         int cubeID;
         // 0 - 1 // 1 - 2 // 2 - 3
@@ -109,14 +105,15 @@ public class vertexSystem
         float cubeX = (particle.x - _bounds.min.x) % _radius * 4;
         float cubeY = (_bounds.max.y - particle.y) % _radius * 4;
         float cubeZ = (particle.z - _bounds.min.z) % _radius * 4;
+
         // Five errors in here for fill to fix
-        if (cubeX == 0 && cubeY == 0 && cubeZ == 0 )
+        if (cubeX == 0 && cubeY == 0 && cubeZ == 0)
         {
-            if(xId > 0 && yId > 0 && zId > 0)
+            if (xId > 0 && yId > 0 && zId > 0)
             {
                 cubeID = (xId--) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
                 checkS(cubeID, _indice);
-            } 
+            }
             if (xId > 0 && yId > 0)
             {
                 cubeID = (xId--) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
@@ -127,7 +124,7 @@ public class vertexSystem
                 cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
                 checkS(cubeID, _indice);
             }
-            if(xId > 0)
+            if (xId > 0)
             {
                 cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
                 checkS(cubeID, _indice);
@@ -141,19 +138,19 @@ public class vertexSystem
                 cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
                 checkS(cubeID, _indice);
             }
-            
-            if(yId > 0)
+
+            if (yId > 0)
             {
                 cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
                 checkS(cubeID, _indice);
             }
-           
-            if(zId > 0)
+
+            if (zId > 0)
             {
                 cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
                 checkS(cubeID, _indice);
             }
-            
+
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
             checkS(cubeID, _indice);
         }
@@ -164,7 +161,7 @@ public class vertexSystem
                 cubeID = (xId--) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId));
                 checkS(cubeID, _indice);
             }
-            if ( xId > 0)
+            if (xId > 0)
             {
                 cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
                 checkS(cubeID, _indice);
@@ -176,7 +173,7 @@ public class vertexSystem
                 checkS(cubeID, _indice);
             }
             // X is +
-           
+
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
             checkS(cubeID, _indice);
 
@@ -188,12 +185,12 @@ public class vertexSystem
                 cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId)--);
                 checkS(cubeID, _indice);
             }
-            if(xId > 0)
+            if (xId > 0)
             {
                 cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
                 checkS(cubeID, _indice);
             }
-            if(zId > 0)
+            if (zId > 0)
             {
                 cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
                 checkS(cubeID, _indice);
@@ -219,8 +216,8 @@ public class vertexSystem
                 cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId--));
                 checkS(cubeID, _indice);
             }
-                // Y is +
-                
+            // Y is +
+
             cubeID = (xId) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
             checkS(cubeID, _indice);
         }
