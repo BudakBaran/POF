@@ -75,7 +75,11 @@ public class vertexSystem
     {
         // if found returns index on list, not found returns -1
         int  i= 0, check = 0;
-        while (this._vertices[vertex].pointIndice[i] != -1 && i < 63)
+        if(i > 200)
+        {
+            Debug.Log(this._vertices[vertex].pointIndice.Length);
+        }
+        while (this._vertices[vertex].pointIndice[i] != -1 && i < 200)
         {
             
             if (this._vertices[vertex].pointIndice[i] == point)
@@ -91,7 +95,7 @@ public class vertexSystem
     public void ifDoesNotExist(int vertice, int particleIndex)
     {
         // create a object fill it and send
-        this._vertices[vertice].pointIndice = Enumerable.Repeat(-1, 64).ToArray();
+        this._vertices[vertice].pointIndice = Enumerable.Repeat(-1, 200).ToArray();
         this._vertices[vertice].pointIndice[0] = particleIndex;
     }
 

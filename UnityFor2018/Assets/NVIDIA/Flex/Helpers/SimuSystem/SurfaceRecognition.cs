@@ -150,8 +150,9 @@ public class SurfaceRecognition
 
         Bounds insideCell = new Bounds();
         insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
-        int[] a = FindAreaCells(insideCell);
 
+        int[] a = FindAreaCells(insideCell);
+        
         return a;
     }
 
@@ -166,11 +167,11 @@ public class SurfaceRecognition
         int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
         int bottomLeftBackward = FindID(new Vector3(insideCell.min.x, insideCell.min.y, insideCell.min.z));
 
-        int tx = (topRightBackward - topLeftBackward) + 1,
-            ty = ((bottomLeftBackward - topLeftBackward) / _intervalx) + 1,
-            tz = ((topLeftForward - topLeftBackward) / (_intervalx * _intervaly)) + 1;
+        int tx = (topRightBackward - topLeftBackward),
+            ty = ((bottomLeftBackward - topLeftBackward) / _intervalx),
+            tz = ((topLeftForward - topLeftBackward) / (_intervalx * _intervaly));
 
-        int[] areaNums = Enumerable.Repeat(-1, (9 + ((ty * tx * tz)))).ToArray();
+        int[] areaNums = Enumerable.Repeat(-1, ( (ty+1) * (tx+1) * (tz+1)) ).ToArray();
         int i = 0, tempNum = topLeftBackward;
 
         for (int k = 0; k < ty; k++)
