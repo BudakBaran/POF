@@ -133,10 +133,7 @@ public class vertexSystem
                 cubeID = (xId--) + (this._intervalx * (yId)) + (this._intervalx * this._intervaly * (zId));
                 checkS(cubeID, _indice);
             }
-            // X is -
 
-            // Updated upstream
-            // X is +
             if (yId > 0 && zId > 0)
             {
                 cubeID = (xId) + (this._intervalx * (yId--)) + (this._intervalx * this._intervaly * (zId--));
