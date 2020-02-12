@@ -48,12 +48,11 @@ namespace NVIDIA.Flex
         void Update()
         {
 
-            _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3,ref groups);
+            _vertexSystem.SetData(GetIndices(), GetParticles(), GetBounds(), m_actor.container.radius / 3, ref groups);
             _vertexSystem.GroupByCells();
 
             _surfaceRecognition.SetData(_particles, GetBounds(), ref groups, m_actor.container.radius / 3);
-            this.testDraw =  _surfaceRecognition.findBoundary(0);
-            Debug.Log("cell no -> " + testDraw.Length);
+            this.testDraw =  _surfaceRecognition.findBoundary(7000);
         }
         public Bounds GetBounds()
         {
@@ -91,44 +90,43 @@ namespace NVIDIA.Flex
             for (int i = 0; i < testDraw.Length; i++)
             {
 
-                Debug.Log("cell no -> " + testDraw.Length);
-                /*if(testDraw[i] >= groups.Length)
-                {
-
-                    Debug.Log(testDraw[i]);
-
-                }*/
+                //Debug.Log("cell no -> " + testDraw.Length);
                 if (testDraw[i] != -1)
                 {
                     Gizmos.color = Color.blue;
                     Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
-                    if (testDraw[i] < 0 || testDraw[i] >= groups.Length ||groups[testDraw[i]].pointIndice.Length < 0)
+
+                    Bounds cihan = new Bounds();
+                    //cihan = sendInsideCell();
+
+                    cihan = _surfaceRecognition.GetCihan();
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawWireCube(cihan.center, cihan.size);
+
+                    /*if (testDraw[i] < 0 || groups[testDraw[i]] == null)
                     {
                         Debug.Log("error -> " + testDraw[i]);
-                    }
-                    for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
+                        Debug.Log("result ->" + groups[0].pointIndice[0]);
+                    }*/
+                    if(groups[testDraw[i]] != null)
                     {
-
-                        if (groups[testDraw[i]].pointIndice[j] != -1)
+                        for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
                         {
-                            k++;
-                            Gizmos.color = Color.red;
-                            //Gizmos.DrawSphere(new Vector3(GetParticles()[groups[i].pointIndice[j]].x, GetParticles()[groups[i].pointIndice[j]].y, GetParticles()[groups[i].pointIndice[j]].z), m_actor.container.radius / 3);
-                            Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z), m_actor.container.radius / 3);
 
+                            if (groups[testDraw[i]].pointIndice[j] != -1)
+                            {
+                                k++;
+                                Gizmos.color = Color.red;
+                                //Gizmos.DrawSphere(new Vector3(GetParticles()[groups[i].pointIndice[j]].x, GetParticles()[groups[i].pointIndice[j]].y, GetParticles()[groups[i].pointIndice[j]].z), m_actor.container.radius / 3);
+                                Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z), m_actor.container.radius / 3);
+
+                            }
                         }
                     }
-                    
+
                 }
             }
-            testDraw = _surfaceRecognition.findBoundary(0);
-
-            Bounds cihan = new Bounds();
-            //cihan = sendInsideCell();
-
-            cihan = _surfaceRecognition.GetCihan();
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(cihan.center, cihan.size);
+            
             ////////////////////////////////////////////////////////////////////////////
         }
 

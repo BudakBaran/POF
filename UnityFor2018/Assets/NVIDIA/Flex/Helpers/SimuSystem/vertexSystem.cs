@@ -7,14 +7,9 @@ using UnityEngine;
 
 public class vertexSystem
 {
-    public struct vertexIndex
+    public class vertexIndex
     {
-        public int[] pointIndice;
-        public vertexIndex(int[] pointIndice)
-        {
-            pointIndice = new int[1] { -1 };
-            this.pointIndice = pointIndice;
-        }
+        public int[] pointIndice = new int[1] { -1 };
     }
 
     private vertexIndex[] _vertices;
@@ -38,7 +33,7 @@ public class vertexSystem
         // setting of hash Indıce is vertex num Insıde array is adress in list
         for (int i = 0; i < _particles.Length; i++)
         {
-            findID(_particles[i], (_radius * 4), i);
+            findID(_particles[i], _radius, i);
         }
     }
 
@@ -50,26 +45,35 @@ public class vertexSystem
         _bounds = bounds;
         _radius = radius;
 
-        this._intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
-        this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));// y ekseninde kaç küçük küp var hesapla.
-        this._intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / (_radius * 4));
+        this._intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius); // x ekseninde kaç küçük küp var hesapla.
+        this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius);// y ekseninde kaç küçük küp var hesapla.
+        this._intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / _radius);
         groups = new vertexIndex[this._intervalx * this._intervaly * this._intervalz];
         this._vertices = groups;
     }
 
     public void checkS(int vertice, int particleIndex)
     {
-
-        if (this._vertices[vertice].pointIndice == null)
+        if(this._vertices[vertice] != null)
         {
+            if (this._vertices[vertice].pointIndice == null)
+            {
 
-            ifDoesNotExist(vertice, particleIndex);
+                ifDoesNotExist(vertice, particleIndex);
+            }
+            else
+            {
+
+                ifExist(vertice, particleIndex);
+            }
         }
         else
         {
-
-            ifExist(vertice, particleIndex);
+            this._vertices[vertice] = new vertexIndex();
+            ifDoesNotExist(vertice, particleIndex);
         }
+
+        
     }
     public void ifExist(int vertex, int point)
     {
@@ -102,9 +106,9 @@ public class vertexSystem
         int xId = (int)Math.Ceiling((particle.x - _bounds.min.x) / _length) - 1;
         int yId = (int)Math.Ceiling((_bounds.max.y - particle.y) / _length) - 1;
         int zId = (int)Math.Ceiling((particle.z - _bounds.min.z) / _length) - 1;
-        float cubeX = (particle.x - _bounds.min.x) % _radius * 4;
-        float cubeY = (_bounds.max.y - particle.y) % _radius * 4;
-        float cubeZ = (particle.z - _bounds.min.z) % _radius * 4;
+        float cubeX = (particle.x - _bounds.min.x) % _radius ;
+        float cubeY = (_bounds.max.y - particle.y) % _radius;
+        float cubeZ = (particle.z - _bounds.min.z) % _radius;
 
         // Five errors in here for fill to fix
         if (cubeX == 0 && cubeY == 0 && cubeZ == 0)

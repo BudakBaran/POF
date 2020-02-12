@@ -155,11 +155,7 @@ public class SurfaceRecognition
 
         int[] a = FindAreaCells(insideCell);
         
-        //Setter
         this._cihanbound = insideCell;
-        int[] x = FindAreaCells(_cihanbound);
-
-        //Getter
 
 
         return a;
@@ -168,11 +164,6 @@ public class SurfaceRecognition
     //int[],
 
         //  SETTER AND GETTER
-
-        public void SetCihan(Bounds _cihanbound)
-        {
-            this._cihanbound = _cihanbound;
-        }
         
         public Bounds GetCihan()
         {
@@ -180,8 +171,8 @@ public class SurfaceRecognition
         }
     public int[] FindAreaCells(Bounds insideCell)
     {
-        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4)); // x ekseninde kaç küçük küp var hesapla.
-        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius); // x ekseninde kaç küçük küp var hesapla.
+        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius);
         int topLeftBackward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
         int topLeftForward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
         int topRightBackward = FindID(new Vector3(insideCell.max.x, insideCell.max.y, insideCell.min.z));
@@ -217,12 +208,12 @@ public class SurfaceRecognition
     public int FindID(Vector3 insideCell)
     {
         int cubeID;
-        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius * 4));
-        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius * 4));
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius));
+        int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / (_radius));
 
-        int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius * 4));
-        int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius * 4));
-        int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius * 4));
+        int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius));
+        int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius));
+        int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius));
         /*if (xId == 0 || yId == 0 || zId == 0)
         {
             if(xId == 0)
