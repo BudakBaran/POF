@@ -12,3 +12,11 @@ UnityFor2018/.vs/
 UnityFor2018/Library/
 
 UnityFor2018/obj/Debug/
+
+UnityFor2018/obj/
+
+UnityFor2018/Temp/
+
+*.csproj
+
+*.sln

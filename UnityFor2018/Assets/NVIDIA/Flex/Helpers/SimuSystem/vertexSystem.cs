@@ -229,6 +229,4 @@ public class vertexSystem
         }
     }
 
-
-    SurfaceRecognition a = new SurfaceRecognition(); // ???
 }

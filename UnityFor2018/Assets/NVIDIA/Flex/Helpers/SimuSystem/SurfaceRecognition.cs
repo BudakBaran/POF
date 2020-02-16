@@ -59,59 +59,32 @@ public class SurfaceRecognition
         return gradient;
 
     }
-    public void FindNeighParticles(int particleId)
+
+    public List<int> FindNeigbourParticles(int [] neighbourCells)
     {
-        /*int[] areaParticles = findBoundary(particleId);
-        int[] neighbours = Enumerable.Repeat(-1, 64).ToArray();
-        int k = 0;
-        for (int i = 0; i < areaParticles.Length; i++)
+        List<int> neighbours = new List<int>();
+        for (int i = 0; i < neighbourCells.Length; i++)
         {
-            for (int j = 0; j < _groups[areaParticles[i]].pointIndice.Length; j++)
+            if (_groups[neighbourCells[i]] != null)
             {
-                if (_groups[areaParticles[i]].pointIndice[j] != -1)
+                for (int j = 0; j < _groups[neighbourCells[i]].pointIndice.Length; j++)
                 {
-                    neighbours[k] = _groups[areaParticles[i]].pointIndice[j];
-                    k++;
+                    if (_groups[neighbourCells[i]].pointIndice[j] != -1)
+                    {
+                        neighbours.Add(_groups[neighbourCells[i]].pointIndice[j]);
+                    }
                 }
             }
         }
-        FindSurfaceParticle(particleId, neighbours);*/
+        return neighbours;
     }
-    public void FindSurfaceParticle(int particleId, int[] neighParticles)
-    {
 
+    public int[] FindSurfaceParticles(int particleId, int[] neighbours)
+    {
+        return null;
+        //
     }
-    /*public float FintLaplacianWeight(Vector3 particle, Vector3 neighbour, float radius)
-    {
-        float statcons = FindConstant(radius);
-        float q = FindDistance(particle, neighbour) / radius;
-        float laplacian = 0;
-        float laplacianpow = 0;
-        if (0 <= q && q < 1)
-        {
-            laplacian = (-2 * q) + (3 * q * q / 2);
-            laplacianpow = -2 + (3 * q);
 
-        }
-        else if (1 <= q && q < 2)
-        {
-            laplacian = (-1 / 2) * (float)Math.Pow((2 - q), 2);
-            laplacianpow = 2 - q;
-        }
-        else
-        {
-            laplacian = 0;
-            laplacianpow = 0;
-        }
-        laplacian *= statcons;
-        laplacianpow *= statcons;
-
-        return (1 / radius * radius) * laplacianpow + (2 / radius) * laplacian; 
-
-
-    }*/
-
-        //int[]
     public int[] findBoundary(int particleIndice)
     {
         float xMax = _particles[particleIndice].x + _radius * 5;
@@ -153,25 +126,26 @@ public class SurfaceRecognition
         Bounds insideCell = new Bounds();
         insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
 
-        int[] a = FindAreaCells(insideCell);
+        int[] neigbourCells = FindAreaCells(insideCell);
         
-        this._cihanbound = insideCell;
+        this._cihanbound = insideCell; // please use realistic var names
 
-
-        return a;
+        int[] neighbourParticles = FindNeigbourParticles(neigbourCells).ToArray();
+        FindSurfaceParticles(particleIndice, neighbourParticles);
+        return neigbourCells;
     }
 
     //int[],
 
         //  SETTER AND GETTER
         
-        public Bounds GetCihan()
+        public Bounds GetCihan() // More realistic var and method names...
         {
-            return _cihanbound;
+            return _cihanbound; // More again...
         }
     public int[] FindAreaCells(Bounds insideCell)
     {
-        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius); // x ekseninde kaç küçük küp var hesapla.
+        int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius);
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius);
         int topLeftBackward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.min.z));
         int topLeftForward = FindID(new Vector3(insideCell.min.x, insideCell.max.y, insideCell.max.z));
@@ -192,17 +166,12 @@ public class SurfaceRecognition
                 for (int m = 0; m < tx; m++)
                 {
                     areaNums[i] = tempNum + m;
-                    //Debug.Log("aslkdjaşlksdjsaşlkdj"+_groups.Length);
-                    //Debug.Log(areaNums[i]);
                     i++;
                 }
                 tempNum += (_intervalx * _intervaly);
             }
             tempNum = areaNums[0] + (_intervalx * (k + 1));
         }
-        //Debug.Log("i is ->>>>" + i + "size is ---->" + areaNums.Length);
-
-        //return insideCell;
         return areaNums;
     }
     public int FindID(Vector3 insideCell)
@@ -214,22 +183,6 @@ public class SurfaceRecognition
         int xId = (int)Math.Ceiling((insideCell.x - _bounds.min.x) / (_radius));
         int yId = (int)Math.Ceiling((_bounds.max.y - insideCell.y) / (_radius));
         int zId = (int)Math.Ceiling((insideCell.z - _bounds.min.z) / (_radius));
-        /*if (xId == 0 || yId == 0 || zId == 0)
-        {
-            if(xId == 0)
-            {
-                xId++;
-            }
-            if(yId == 0)
-            {
-                yId++;
-            }
-            if (zId == 0)
-            {
-                zId++;
-            }
-            Debug.Log("under zero");
-        }*/
         cubeID = (xId) + (_intervalx * (yId)) + (_intervalx * _intervaly * (zId));
     
         return cubeID;
