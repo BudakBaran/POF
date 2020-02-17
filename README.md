@@ -12,7 +12,6 @@ as of performance quality and seek for a more optimized way to do it.
 * Higher frame rates per second.
 
 ### Project application areas:
->>>>>>> Stashed changes
 * Animations and Movies
 * Scientific work
 * Games
@@ -31,7 +30,7 @@ You can visit [Nvidia Flex website](https://developer.nvidia.com/flex)
  You can find the Marching Cubes algorithm from [here](https://en.wikipedia.org/wiki/Marching_cubes)
 
 ### Apply existing Methods
-
+* Marching Cubes
 * Zhu&Bridson
 * Surface Recognition
 * Etc.
