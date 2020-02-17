@@ -15,7 +15,7 @@ public class SurfaceRecognition
     public Vector4[] _particles;
     public vertexSystem.vertexIndex[] _groups;
     Bounds _bounds;
-    Bounds _cihanbound;
+    Bounds _ParticleNeighbound;
 
     float _radius;
     public void SetData(Vector4[] particles, Bounds bounds, ref vertexSystem.vertexIndex[] groups, float radius)
@@ -128,7 +128,7 @@ public class SurfaceRecognition
 
         int[] neigbourCells = FindAreaCells(insideCell);
         
-        this._cihanbound = insideCell; // please use realistic var names
+        this._ParticleNeighbound = insideCell; 
 
         int[] neighbourParticles = FindNeigbourParticles(neigbourCells).ToArray();
         FindSurfaceParticles(particleIndice, neighbourParticles);
@@ -139,9 +139,9 @@ public class SurfaceRecognition
 
         //  SETTER AND GETTER
         
-        public Bounds GetCihan() // More realistic var and method names...
+        public Bounds GetParticleBound() 
         {
-            return _cihanbound; // More again...
+            return _ParticleNeighbound; 
         }
     public int[] FindAreaCells(Bounds insideCell)
     {

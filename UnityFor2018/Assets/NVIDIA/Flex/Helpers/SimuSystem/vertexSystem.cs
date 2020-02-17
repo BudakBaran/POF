@@ -46,7 +46,7 @@ public class vertexSystem
         _radius = radius;
 
         this._intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius); // x ekseninde kaç küçük küp var hesapla.
-        this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius);// y ekseninde kaç küçük küp var hesapla.
+        this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius); // y ekseninde kaç küçük küp var hesapla.
         this._intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / _radius);
         groups = new vertexIndex[this._intervalx * this._intervaly * this._intervalz];
         this._vertices = groups;

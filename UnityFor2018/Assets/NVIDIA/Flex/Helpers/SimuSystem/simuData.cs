@@ -93,11 +93,10 @@ namespace NVIDIA.Flex
                     Gizmos.color = Color.blue;
                     Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
 
-                    Bounds cihan = new Bounds();
-                    cihan = _surfaceRecognition.GetCihan(); // change with more realistic names
-
+                    Bounds ParticleCube = new Bounds();
+                    ParticleCube = _surfaceRecognition.GetParticleBound();
                     Gizmos.color = Color.red;
-                    Gizmos.DrawWireCube(cihan.center, cihan.size);
+                    Gizmos.DrawWireCube(ParticleCube.center, ParticleCube.size);
                     if(groups[testDraw[i]] != null)
                     {
                         for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
