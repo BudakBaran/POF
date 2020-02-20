@@ -59,18 +59,7 @@ namespace MarchingCubesProject
                         int idx = x + y * width + z * width * height;
 
                         //Random random = new Random();
-                        voxels[idx] =  Random.Range(0,2) ;
-                      
-
-                        if (voxels[idx] == 0)
-                        {
-                            voxels[idx] = 0.1f;
-                        }
-                        else
-                        {
-                            voxels[idx] = 0.0f;
-                        }
-                        Debug.Log("Result : " + voxels[idx]);
+                        voxels[idx] = fractal.Sample3D(fx, fy, fz);
                     }
                 }
             }
