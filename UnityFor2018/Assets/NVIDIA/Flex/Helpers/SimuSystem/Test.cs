@@ -52,36 +52,6 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3[] a = new Vector3[64];
-        int[] hash = new int[64];
-        int indice = 0;
-        for (int i = 0; i < 3; i++)
-        {
-            for(int j = 0; j < 3; j++)
-            {
-                for(int k = 0; k < 3; k++)
-                {
-                    indice++;
-                    a[indice - 1] = new Vector3(i, j, k);
-                }
-            }
-        }
-       
-        for(int i = 0; i < 64; i++)
-        {
-            hash[i] = (int)Mathf.Round((a[i].x * 3) + (a[i].y * 5) + (a[i].z * 7));
-        }
-        for (int i = 0; i < 64; i++)
-        {
-            float s = Mathf.Sqrt(((2-a[i].x) * (2 - a[i].x)) + ((2 - a[i].y) * (2 - a[i].y)) + ((1 - a[i].z) * (1 - a[i].z)));
-            if( s < 2.2)
-            {
-                Debug.Log("Neigh Point is --->" + a[i]);
-                Debug.Log("Hash is ------->" + hash[i]);
-            }
 
-        }
-
-        /////////// start zhu and bridson
     }
 }

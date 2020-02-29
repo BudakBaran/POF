@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Bu classın adını particleFinder olarak degistir//
+
 public class SurfaceRecognition
 {
     // Start is called before the first frame update
@@ -85,7 +87,7 @@ public class SurfaceRecognition
         //
     }
 
-    public int[] findBoundary(int particleIndice)
+    public int[] findBoundary(int particleIndice) // Particle finder'a koy.
     {
         float xMax = _particles[particleIndice].x + _radius * 5;
         if (xMax > _bounds.max.x)
@@ -143,7 +145,7 @@ public class SurfaceRecognition
         {
             return _ParticleNeighbound; 
         }
-    public int[] FindAreaCells(Bounds insideCell)
+    public int[] FindAreaCells(Bounds insideCell) // Particle finder'a koy.
     {
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius);
         int _intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius);
@@ -174,7 +176,7 @@ public class SurfaceRecognition
         }
         return areaNums;
     }
-    public int FindID(Vector3 insideCell)
+    public int FindID(Vector3 insideCell) // Particle finder'a koy.
     {
         int cubeID;
         int _intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / (_radius));
@@ -187,7 +189,7 @@ public class SurfaceRecognition
     
         return cubeID;
     }
-    public void retSurfParticles()
+    public void ReturnSurfParticles()
     {
 
     }
