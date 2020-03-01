@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Calculator
+public class SituationalSurfaceCalculator
 {
 
     public Vector4[] _particles;
@@ -32,8 +32,6 @@ public class Calculator
         if (0 <= q && q < 0.5)
         {
             gradient = (-2 * q) + (3 * q * q / 2);
-
-
         }
         else if (0.5 <= q && q <= 1)
         {
@@ -45,7 +43,6 @@ public class Calculator
         }
         gradient *= (statcons / (float)Math.Pow(radius, 3));
         return gradient;
-
     }
 
 

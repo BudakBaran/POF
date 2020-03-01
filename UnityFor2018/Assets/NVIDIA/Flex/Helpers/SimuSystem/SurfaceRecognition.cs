@@ -15,12 +15,12 @@ public class SurfaceRecognition
     }
 
     public Vector4[] _particles;
-    public vertexSystem.vertexIndex[] _groups;
+    public HashSystem.HashModel[] _groups;
     Bounds _bounds;
     Bounds _ParticleNeighbound;
 
     float _radius;
-    public void SetData(Vector4[] particles, Bounds bounds, ref vertexSystem.vertexIndex[] groups, float radius)
+    public void SetData(Vector4[] particles, Bounds bounds, ref HashSystem.HashModel[] groups, float radius)
     {
         this._groups = groups;
         this._particles = particles;
@@ -132,8 +132,8 @@ public class SurfaceRecognition
         
         this._ParticleNeighbound = insideCell; 
 
-        int[] neighbourParticles = FindNeigbourParticles(neigbourCells).ToArray();
-        FindSurfaceParticles(particleIndice, neighbourParticles);
+       // int[] neighbourParticles = FindNeigbourParticles(neigbourCells).ToArray();
+        //FindSurfaceParticles(particleIndice, neighbourParticles);
         return neigbourCells;
     }
 

@@ -7,14 +7,14 @@ using UnityEngine;
 
 // Bu classın adını HashSystem olarak degistir//
 
-public class vertexSystem
+public class HashSystem
 {
-    public class vertexIndex
+    public class HashModel
     {
         public int[] pointIndice = new int[1] { -1 };
     }
 
-    private vertexIndex[] _vertices;
+    private HashModel[] _vertices;
     // Used for mathematical calculations and setting datas to vertex point
     // always get data change data
     // (find a vertex data from 3d surface)
@@ -39,7 +39,7 @@ public class vertexSystem
         }
     }
 
-    public void SetData(int[] indices, Vector4[] particles, Bounds bounds, float radius, ref vertexIndex[] groups)
+    public void SetData(int[] indices, Vector4[] particles, Bounds bounds, float radius, ref HashModel[] groups)
     {
         // it comes from simuData class
         _indices = indices;
@@ -50,7 +50,7 @@ public class vertexSystem
         this._intervalx = (int)Math.Ceiling((_bounds.max.x - _bounds.min.x) / _radius); // x ekseninde kaç küçük küp var hesapla.
         this._intervaly = (int)Math.Ceiling((_bounds.max.y - _bounds.min.y) / _radius); // y ekseninde kaç küçük küp var hesapla.
         this._intervalz = (int)Math.Ceiling((_bounds.max.z - _bounds.min.z) / _radius);
-        groups = new vertexIndex[this._intervalx * this._intervaly * this._intervalz];
+        groups = new HashModel[this._intervalx * this._intervaly * this._intervalz];
         this._vertices = groups;
     }
 
@@ -71,7 +71,7 @@ public class vertexSystem
         }
         else
         {
-            this._vertices[vertice] = new vertexIndex();
+            this._vertices[vertice] = new HashModel();
             ifDoesNotExist(vertice, particleIndex);
         }
 
@@ -230,5 +230,4 @@ public class vertexSystem
             checkS(cubeID, _indice);
         }
     }
-
 }

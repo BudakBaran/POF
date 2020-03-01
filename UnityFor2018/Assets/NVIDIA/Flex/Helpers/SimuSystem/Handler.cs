@@ -6,11 +6,11 @@ namespace NVIDIA.Flex
 {
     [ExecuteInEditMode]
     [DisallowMultipleComponent]
-    public class simuData : MonoBehaviour
+    public class Handler : MonoBehaviour
     {
         int length;
         public static Vector4[] _particles = new Vector4[125001];
-        public static vertexSystem.vertexIndex[] groups;
+        public static HashSystem.HashModel[] groups;
         //int[]
         int[] testDraw;
         #region Messages
@@ -120,7 +120,7 @@ namespace NVIDIA.Flex
 
         FlexActor m_actor;
         SurfaceRecognition _surfaceRecognition = new SurfaceRecognition();
-        vertexSystem _vertexSystem = new vertexSystem();
+        HashSystem _vertexSystem = new HashSystem();
         #endregion
     }
 }
