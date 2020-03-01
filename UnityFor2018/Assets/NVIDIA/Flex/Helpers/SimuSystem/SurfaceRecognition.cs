@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// Bu classın adını particleFinder olarak degistir//
+// Change this class name as SurfaceParticleFinder. //
 
 public class SurfaceRecognition
 {
