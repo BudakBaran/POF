@@ -7,27 +7,48 @@ using UnityEngine;
 public class SituationalSurfaceCalculator
 {
 
-    public Vector4[] _particles;
-    public vertexSystem.vertexIndex[] _groups;
-    Bounds _bounds;
-    Bounds _ParticleNeighbound; 
+    public Vector4[] particles;
+    public vertexSystem.vertexIndex[] groups;
+    Bounds bounds;
+    Bounds particleNeighbound;
 
-    public float FindDistance(Vector3 vertex, Vector3 point)
+    //////////////////////////////// General FunctionS   ////////////////////////////////////////
+    /*
+        public float findDistance(Vector3 vertex, Vector3 point)
+        {
+            return (float)Math.Sqrt(Math.Pow((vertex.x - point.x), 2) + Math.Pow((vertex.y - point.y), 2) + Math.Pow((vertex.z - point.z), 2));
+        }
+    */
+
+
+    public float findDistance(Vector3 vertex, Vector3 point)
     {
-        return (float)Math.Sqrt(Math.Pow((vertex.x - point.x), 2) + Math.Pow((vertex.y - point.y), 2) + Math.Pow((vertex.z - point.z), 2));
+        int xDimension = vertex.x - point.x;
+        int yDimension = vertex.y - point.y;
+        int zDimension = vertex.z - point.z;
+
+        xDimension = Math.Pow(xDimension, 2);
+        yDimension = Math.Pow(yDimension, 2);
+        zDimension = Math.Pow(zDimension, 2);
+
+
+        return (float)Math.Sqrt(xDimension + yDimension + zDimension);
     }
 
-    public float FindConstant(float radius)
+    //////////////////////////////// SURFACE FINDING PART   ////////////////////////////////////////
+
+
+    public float findConstant(float radius)
     {
         float cons = 8 / (float)(Math.PI);
         return cons;
     }
 
-    public float FindGradientWeight(Vector3 particle, Vector3 neighbour, float radius)
+    public float findGradientWeight(Vector3 particle, Vector3 neighbour, float radius)
     {
         //////////////// IF RETURN NEGATİVE ERROR
-        float statcons = FindConstant(radius);
-        float q = FindDistance(particle, neighbour) / radius;
+        float statcons = findConstant(radius);
+        float q = findDistance(particle, neighbour) / radius;
         float gradient = 0;
         if (0 <= q && q < 0.5)
         {
@@ -46,18 +67,18 @@ public class SituationalSurfaceCalculator
     }
 
 
-    public List<int> FindNeigbourParticles(int[] neighbourCells)
+    public List<int> findNeigbourParticles(int[] neighbourCells)
     {
         List<int> neighbours = new List<int>();
         for (int i = 0; i < neighbourCells.Length; i++)
         {
-            if (_groups[neighbourCells[i]] != null)
+            if (groups[neighbourCells[i]] != null)
             {
-                for (int j = 0; j < _groups[neighbourCells[i]].pointIndice.Length; j++)
+                for (int j = 0; j < groups[neighbourCells[i]].pointIndice.Length; j++)
                 {
-                    if (_groups[neighbourCells[i]].pointIndice[j] != -1)
+                    if (groups[neighbourCells[i]].pointIndice[j] != -1)
                     {
-                        neighbours.Add(_groups[neighbourCells[i]].pointIndice[j]);
+                        neighbours.Add(groups[neighbourCells[i]].pointIndice[j]);
                     }
                 }
             }
@@ -65,14 +86,14 @@ public class SituationalSurfaceCalculator
         return neighbours;
     }
 
-    public int[] FindSurfaceParticles(int particleId, int[] neighbours)
+    public int[] findSurfaceParticles(int particleId, int[] neighbours)
     {
         return null;
-        
+
     }
 
-    /////////////////////////// Zhu & Bridson Part
-    ///
+    //////////////////////////////// Zhu & Bridson Part   /////////////////////////////////////////////////////////////////
+
 
     public float findKernel(float s)
     {
@@ -85,11 +106,11 @@ public class SituationalSurfaceCalculator
         float sum = 0;
         for (int j = 0; j < particles.Length; j++)
         {
-            sum += findKernel(FindDistance(vertex, particles[j]) / length);
+            sum += findKernel(findDistance(vertex, particles[j]) / length);
         }
         for (int i = 0; i < particles.Length; i++)
         {
-            weights[i] = findKernel(FindDistance(vertex, particles[i]) / length) / sum;
+            weights[i] = findKernel(findDistance(vertex, particles[i]) / length) / sum;
         }
         return weights;
     }
@@ -104,9 +125,29 @@ public class SituationalSurfaceCalculator
         return ret;
     }
 
+
+
+    /*
     public float ZhuAndBridson(Vector3 vertex, Vector3 weighted, float radius)
     {
         return (float)Math.Sqrt(Math.Pow((vertex.x - weighted.x), 2) + Math.Pow((vertex.y - weighted.y), 2) + Math.Pow((vertex.z - weighted.z), 2)) - radius;
+    }
+*/
+
+    public float zhuAndBridson(Vector3 vertex, Vector3 weighted, float radius)
+    {
+        int xDimension = vertex.x - weighted.x;
+        int yDimension = vertex.y - weighted.y;
+        int zDimension = vertex.z - weighted.z;
+
+        xDimension = Math.Pow(xDimension, 2);
+        yDimension = Math.Pow(yDimension, 2);
+        zDimension = Math.Pow(zDimension, 2);
+
+        return (float)Math.Sqrt((xDimension + yDimension + zDimension)) - radius;
+
+
+
     }
 
 }
