@@ -20,3 +20,5 @@ UnityFor2018/Temp/
 *.csproj
 
 *.sln
+
+Docs/.DS_Store

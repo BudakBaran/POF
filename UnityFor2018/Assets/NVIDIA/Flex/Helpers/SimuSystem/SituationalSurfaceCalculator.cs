@@ -94,11 +94,29 @@ public class SituationalSurfaceCalculator
 
     //////////////////////////////// Zhu & Bridson Part   /////////////////////////////////////////////////////////////////
 
+/*
 
     public float findKernel(float s)
     {
         return Math.Max(0, (float)Math.Pow(1 - Math.Pow(s, 2), 3));
     }
+
+*/
+
+
+    public float findKernel(float s)
+    {
+        float q=s;
+        q = (float)Math.Pow(1 - Math.Pow(q , 2) , 3);
+        return Math.Max(0 , q);
+    }
+
+
+
+
+
+
+
 
 
     public float[] findWeights(Vector3 vertex, Vector3[] particles, float[] weights, float length)
