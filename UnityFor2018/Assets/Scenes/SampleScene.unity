@@ -273,8 +273,8 @@ GameObject:
   m_Component:
   - component: {fileID: 750052639}
   - component: {fileID: 750052638}
-  - component: {fileID: 750052641}
   - component: {fileID: 750052640}
+  - component: {fileID: 750052641}
   m_Layer: 0
   m_Name: POF
   m_TagString: Untagged
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 750052637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3156a32ba494afd49a8cf4914a4a9f30, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e078e372961a204e8daa1f8838d06a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1651932525

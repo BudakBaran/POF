@@ -13,7 +13,7 @@ namespace NVIDIA.Flex
         #region Messages
         void Start()
         {
-            _simuData = GetComponent<simuData>();
+            _simuData = GetComponent<Handler>();
         }
 
         void OnDisable()
@@ -37,7 +37,7 @@ namespace NVIDIA.Flex
         }
 
         #endregion
-        simuData _simuData;
+        Handler _simuData;
       
 
     }

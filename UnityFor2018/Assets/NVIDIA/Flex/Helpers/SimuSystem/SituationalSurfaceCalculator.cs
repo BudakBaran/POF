@@ -8,7 +8,7 @@ public class SituationalSurfaceCalculator
 {
 
     public Vector4[] particles;
-    public vertexSystem.vertexIndex[] groups;
+    public HashSystem.HashModel[] groups;
     Bounds bounds;
     Bounds particleNeighbound;
 
@@ -23,13 +23,13 @@ public class SituationalSurfaceCalculator
 
     public float findDistance(Vector3 vertex, Vector3 point)
     {
-        int xDimension = vertex.x - point.x;
-        int yDimension = vertex.y - point.y;
-        int zDimension = vertex.z - point.z;
+        float xDimension = vertex.x - point.x;
+        float yDimension = vertex.y - point.y;
+        float zDimension = vertex.z - point.z;
 
-        xDimension = Math.Pow(xDimension, 2);
-        yDimension = Math.Pow(yDimension, 2);
-        zDimension = Math.Pow(zDimension, 2);
+        xDimension = (float)Math.Pow(xDimension, 2);
+        yDimension = (float)Math.Pow(yDimension, 2);
+        zDimension = (float)Math.Pow(zDimension, 2);
 
 
         return (float)Math.Sqrt(xDimension + yDimension + zDimension);
@@ -111,14 +111,6 @@ public class SituationalSurfaceCalculator
         return Math.Max(0 , q);
     }
 
-
-
-
-
-
-
-
-
     public float[] findWeights(Vector3 vertex, Vector3[] particles, float[] weights, float length)
     {
         float sum = 0;
@@ -154,18 +146,15 @@ public class SituationalSurfaceCalculator
 
     public float zhuAndBridson(Vector3 vertex, Vector3 weighted, float radius)
     {
-        int xDimension = vertex.x - weighted.x;
-        int yDimension = vertex.y - weighted.y;
-        int zDimension = vertex.z - weighted.z;
+        float xDimension = (vertex.x - weighted.x);
+        float yDimension = (vertex.y - weighted.y);
+        float zDimension = (vertex.z - weighted.z);
 
-        xDimension = Math.Pow(xDimension, 2);
-        yDimension = Math.Pow(yDimension, 2);
-        zDimension = Math.Pow(zDimension, 2);
+        xDimension = (float)Math.Pow(xDimension, 2);
+        yDimension = (float)Math.Pow(yDimension, 2);
+        zDimension = (float)Math.Pow(zDimension, 2);
 
         return (float)Math.Sqrt((xDimension + yDimension + zDimension)) - radius;
-
-
-
     }
 
 }

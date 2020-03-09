@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using ProceduralNoiseProject;
+using Triangulation;
 //using System;
 namespace MarchingCubesProject
 {

@@ -9,7 +9,7 @@ namespace NVIDIA.Flex
     public class Handler : MonoBehaviour
     {
         int length;
-        public static Vector4[] _particles = new Vector4[125001];
+        public static Vector4[] _particles = new Vector4[15527];
         public static HashSystem.HashModel[] groups;
         //int[]
         int[] testDraw;
@@ -52,7 +52,8 @@ namespace NVIDIA.Flex
             _vertexSystem.GroupByCells();
 
             _surfaceRecognition.SetData(_particles, GetBounds(), ref groups, m_actor.container.radius / 3);
-            this.testDraw =  _surfaceRecognition.findBoundary(7000);
+            int[] particles = new int[1] { 0 };
+            this.testDraw =  _surfaceRecognition.findBoundary();
 
         }
         public Bounds GetBounds()
@@ -86,34 +87,35 @@ namespace NVIDIA.Flex
         {
             ////////////////////////////////////////////////////////////////////
             int k = 0;
-            for (int i = 0; i < testDraw.Length; i++)
+            /*for (int i = 0; i < testDraw.Length; i++)
             {
-                if (testDraw[i] != -1)
-                {
-                    Gizmos.color = Color.blue;
-                    Gizmos.DrawSphere(new Vector3(_particles[0].x, _particles[0].y, _particles[0].z), m_actor.container.radius / 3);
+                Gizmos.color = Color.blue;
+                Gizmos.DrawSphere(new Vector3(_particles[testDraw[i]].x, _particles[testDraw[i]].y, _particles[testDraw[i]].z), m_actor.container.radius / 3);
+                 if (testDraw[i] != -1)
+                 {
+                     Gizmos.color = Color.blue;
+                     Gizmos.DrawSphere(new Vector3(_particles[500].x, _particles[500].y, _particles[123].z), m_actor.container.radius / 3);
 
-                    Bounds ParticleCube = new Bounds();
-                    ParticleCube = _surfaceRecognition.GetParticleBound();
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawWireCube(ParticleCube.center, ParticleCube.size);
-                    if(groups[testDraw[i]] != null)
-                    {
-                        for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
-                        {
+                     Bounds ParticleCube = new Bounds();
+                     ParticleCube = _surfaceRecognition.GetParticleBound();
+                     Gizmos.color = Color.red;
+                     Gizmos.DrawWireCube(ParticleCube.center, ParticleCube.size);
+                     if(groups[testDraw[i]] != null)
+                     {
+                         for (int j = 0; j < groups[testDraw[i]].pointIndice.Length; j++)
+                         {
 
-                            if (groups[testDraw[i]].pointIndice[j] != -1)
-                            {
-                                k++;
-                                Gizmos.color = Color.red;
-                                Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z), m_actor.container.radius / 3);
+                             if (groups[testDraw[i]].pointIndice[j] != -1)
+                             {
+                                 k++;
+                                 Gizmos.color = Color.red;
+                                 Gizmos.DrawSphere(new Vector3(GetParticles()[groups[testDraw[i]].pointIndice[j]].x, GetParticles()[groups[testDraw[i]].pointIndice[j]].y, GetParticles()[groups[testDraw[i]].pointIndice[j]].z), m_actor.container.radius / 3);
 
-                            }
-                        }
-                    }
-
-                }
-            }
+                             }
+                         }
+                     }
+                 }
+            }*/
             
         }
 

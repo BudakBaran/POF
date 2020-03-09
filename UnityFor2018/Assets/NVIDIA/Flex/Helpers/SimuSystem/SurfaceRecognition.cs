@@ -28,52 +28,37 @@ public class SurfaceRecognition
         this._radius = radius;
     }
 
+    public float findKernel(float s)
+    {
+        float q = s;
+
+        q = (float)Math.Pow(1 - Math.Pow(q, 2), 3);
+
+        return Math.Max(0, q);
+    }
+
     public float FindDistance(Vector3 vertex, Vector3 point)
     {
         return (float)Math.Sqrt(Math.Pow((vertex.x - point.x), 2) + Math.Pow((vertex.y - point.y), 2) + Math.Pow((vertex.z - point.z), 2));
     }
 
-    public float FindConstant(float radius)
+    public List<Vector3> FindNeigbourParticles(int [] neighbourCells)
     {
-        float cons = 8 / (float)(Math.PI);
-        return cons;
-    }
-    public float FindGradientWeight(Vector3 particle, Vector3 neighbour, float radius)
-    {
-        //////////////// IF RETURN NEGATİVE ERROR
-        float statcons = FindConstant(radius);
-        float q = FindDistance(particle, neighbour) / radius;
-        float gradient = 0;
-        if (0 <= q && q < 0.5)
-        {
-            gradient = (-2 * q) + (3 * q * q / 2);
-
-
-        } else if (0.5 <= q && q <= 1)
-        {
-            gradient = (-1 / 2) * (float)Math.Pow((2 - q), 2);
-        }
-        else if (q > 1)
-        {
-            gradient = 0;
-        }
-        gradient *= (statcons / (float)Math.Pow(radius, 3));
-        return gradient;
-
-    }
-
-    public List<int> FindNeigbourParticles(int [] neighbourCells)
-    {
-        List<int> neighbours = new List<int>();
+        List<Vector3> neighbours = new List<Vector3>();
         for (int i = 0; i < neighbourCells.Length; i++)
         {
-            if (_groups[neighbourCells[i]] != null)
-            {
-                for (int j = 0; j < _groups[neighbourCells[i]].pointIndice.Length; j++)
+            if (neighbourCells[i] != -1) { 
+                if (_groups[neighbourCells[i]] != null)
                 {
-                    if (_groups[neighbourCells[i]].pointIndice[j] != -1)
+                    for (int j = 0; j < _groups[neighbourCells[i]].pointIndice.Length; j++)
                     {
-                        neighbours.Add(_groups[neighbourCells[i]].pointIndice[j]);
+                        if (_groups[neighbourCells[i]].pointIndice[j] != -1)
+                        {
+                            float x = _particles[_groups[neighbourCells[i]].pointIndice[j]].x;
+                            float y = _particles[_groups[neighbourCells[i]].pointIndice[j]].y;
+                            float z = _particles[_groups[neighbourCells[i]].pointIndice[j]].z;
+                            neighbours.Add(new Vector3(x, y, z));
+                        }
                     }
                 }
             }
@@ -81,60 +66,91 @@ public class SurfaceRecognition
         return neighbours;
     }
 
-    public int[] FindSurfaceParticles(int particleId, int[] neighbours)
+
+    public Vector3 FindWeigtedX(Vector3 centerParticle, Vector3[] neighbourParticles, float searchRadius)
     {
-        return null;
-        //
+        Vector3 weightedPosition = new Vector3(0, 0, 0);
+        float weightedConstant = 0;
+        for (int i = 0; i < neighbourParticles.Length; i++)
+        {
+            float distance = FindDistance(centerParticle, neighbourParticles[i]);
+
+            weightedPosition += neighbourParticles[i] * findKernel(distance / searchRadius);
+            weightedConstant += findKernel(distance / searchRadius);
+        }
+      
+        return weightedPosition / weightedConstant;
     }
 
-    public int[] findBoundary(int particleIndice) // Particle finder'a koy.
+    public bool isSurfaceParticle(Vector3 centerParticle, Vector3[] neighbourParticles)
     {
-        float xMax = _particles[particleIndice].x + _radius * 5;
-        if (xMax > _bounds.max.x)
+        float returnVal = FindDistance(centerParticle, FindWeigtedX(centerParticle, neighbourParticles, _radius * 8));
+        if (returnVal < 0.102826)
         {
-            xMax = _bounds.max.x;
+            return true;
         }
-
-        float xMin = _particles[particleIndice].x - _radius * 5;
-        if (xMin < _bounds.min.x)
+        else
         {
-            xMin = _bounds.min.x;
+            return false;
         }
+    }
 
-        float yMax = _particles[particleIndice].y + _radius * 5;
-        if (yMax > _bounds.max.y)
-        {
-            yMax = _bounds.max.y;
-        }
 
-        float yMin = _particles[particleIndice].y - _radius * 5;
-        if (yMin < _bounds.min.y)
-        {
-            yMin = _bounds.min.y;
-        }
-
-        float zMax = _particles[particleIndice].z + _radius * 5;
-        if (zMax > _bounds.max.z)
-        {
-            zMax = _bounds.max.z;
-        }
-
-        float zMin = _particles[particleIndice].z - _radius * 5;
-        if (zMin < _bounds.min.z)
-        {
-            zMin = _bounds.min.z;
-        }
-
+    public int[] findBoundary() // Particle finder'a koy.
+    {
         Bounds insideCell = new Bounds();
-        insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
+        int[] neigbourCells = { -1 };
+        List<int> surfaceParticles = new List<int>();
 
-        int[] neigbourCells = FindAreaCells(insideCell);
-        
-        this._ParticleNeighbound = insideCell; 
+        for (int i = 0; i < 15526; i++)
+        {
+            float xMax = _particles[i].x + _radius * 8;
+            if (xMax > _bounds.max.x)
+            {
+                xMax = _bounds.max.x;
+            }
 
-       // int[] neighbourParticles = FindNeigbourParticles(neigbourCells).ToArray();
-        //FindSurfaceParticles(particleIndice, neighbourParticles);
-        return neigbourCells;
+            float xMin = _particles[i].x - _radius * 8;
+            if (xMin < _bounds.min.x)
+            {
+                xMin = _bounds.min.x;
+            }
+
+            float yMax = _particles[i].y + _radius * 8;
+            if (yMax > _bounds.max.y)
+            {
+                yMax = _bounds.max.y;
+            }
+
+            float yMin = _particles[i].y - _radius * 8;
+            if (yMin < _bounds.min.y)
+            {
+                yMin = _bounds.min.y;
+            }
+
+            float zMax = _particles[i].z + _radius * 8;
+            if (zMax > _bounds.max.z)
+            {
+                zMax = _bounds.max.z;
+            }
+
+            float zMin = _particles[i].z - _radius * 8;
+            if (zMin < _bounds.min.z)
+            {
+                zMin = _bounds.min.z;
+            }
+
+            insideCell.SetMinMax(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
+            neigbourCells = FindAreaCells(insideCell);
+            bool isSurface = isSurfaceParticle(_particles[i], FindNeigbourParticles(neigbourCells).ToArray());
+            if (isSurface)
+            {
+                surfaceParticles.Add(i);
+            }
+        }
+        this._ParticleNeighbound = insideCell;
+        return surfaceParticles.ToArray();
+        //return neigbourCells;
     }
 
     //int[],
