@@ -54,7 +54,7 @@ namespace NVIDIA.Flex
             _surfaceRecognition.SetData(_particles, GetBounds(), ref groups, (m_actor.container.radius * 2) / 3);
             int[] particles = new int[1] { 0 };
             this.testDraw =  _surfaceRecognition.findBoundary();
-
+            // _marchingCubes.StartSimu(testDraw)
         }
 
         // Decide AABB
