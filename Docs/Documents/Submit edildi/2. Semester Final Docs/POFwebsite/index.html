@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+
+  	<nav id="navbar" class="navbar">
+		  <ul class="nav-menu">
+		    <li>
+		      <a data-scroll="home" href="#home" class="dot active">
+		        <span>Cover</span>
+		      </a>
+		    </li>
+		    <li>
+		      <a data-scroll="about" href="#about" class="dot">
+		        <span>Aim</span>
+		      </a>
+		    </li>
+		    <li>
+		      <a data-scroll="services" href="#services" class="dot">
+		        <span>Implementation</span>
+		      </a>
+			</li>
+			<li>
+		      <a data-scroll="testin" href="#testing" class="dot">
+		        <span>Testing</span>
+		      </a>
+			</li>
+			<li>
+		      <a data-scroll="download" href="#download" class="dot">
+		        <span>Downloadables</span>
+		      </a>
+			</li>
+			<li>
+				<a data-scroll="slidePOF" href="#slidePOF" class="dot">
+				  <span>POF Gallery</span>
+				</a>
+			</li>
+		    <li>
+		      <a data-scroll="testimonial" href="#testimonial" class="dot">
+		        <span>Conclusion</span>
+		      </a>
+			</li>
+			
+		  </ul>
+		</nav>
+		<!-- End Nav Section -->
+
+		<!-- Start Home Section -->
+	  <section id="home" class="hero-wrap delay js-fullheight" style="background-image: url(images/back5.jpg);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-lg-7 d-flex align-items-center">
+          	<div class="text text-center delay2">
+          		<h1 class="logo mb-10"><a href="index.html"><img class="img-about" src="images/wave.png"><h3 class="mb-0"><em>POF</em></h3><h5><small>Perfomance Optimized Fluids</small></h5></a></h1>
+		  				<h6 class="mb-4 txtwhite">Baran Budak, Cihanser Çalışkan, İsmail Mekan<br>Supervisor: Mehmet Ufuk Çağlayan</h6>
+		  				<p class="mb-4 txtwhite">System that does surface recognition in particle-based fluid simulation. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<!-- End Home Section -->
+
+		<!-- Start About Me Section -->
+		<section class="ftco-about img ftco-section" id="about">
+	    	<div class="container">
+	    		<div class="row d-flex no-gutters">
+	    			<div class="col-md-6 col-lg-6 d-flex">
+	    				<div class="img-about img d-flex align-items-stretch">
+	    					<div class="overlay"></div>
+		    				<div  class="img img-video d-flex align-self-stretch align-items-center" style="background-image:url(images/img3.png);">
+		    					
+		    				</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-6 col-lg-6 pl-md-5">
+		          <div class=" ftco-animate">
+		            <h2 class="mb-4 subheading2">AIM</h2>
+		            <p class="text-justify">The POF project aim is researching smoothed particle hydrodynamics and enhancing the performance of the particle-based fluid simulation.
+						Increasing the efficiency and performance of an existing particle-based fluid simulation is a major goal.
+						We aim to achieve these goals by implementing a variety of algorithms to the POF system such as using special structures to detect and store particles.</p>
+
+		            <div class="counter-wrap ftco-animate d-flex my-md-4">
+		              <div class="text">
+		              	<p class="mb-4">
+			         
+		                </p>
+		              </div>
+			          </div>
+			          <div class="d-flex w-100 pt-2 pb-2">
+			            <div class="img img-about-2 mr-2" style="background-image: url(images/img1.png);"></div>
+			            <div class="img img-about-2 ml-2" style="background-image: url(images/img2.jpg);"></div>
+			          </div>
+			          	<h2 class="mb-4 mt-3 subheading2">Objectives</h2>
+		            	<p class="text-justify">The main objective of this project is making research and implement this research results on particle-based fluid simulations. The implementation consists of three main parts in the POF system;
+							fast quick access to data (hash), visualization (marching cubes), surface recognition. </p>
+						<p class="text-justify">	In conclusion, the objective of the POF project is making research and implement more beneficial ways of surface reconstruction on particle-based fluid simulations.</p>
+		          </div>
+		        </div>
+	        </div>
+	    	</div>
+    	</section>
+		<!-- End About Me Section -->
+
+		<!-- Start Services Section -->
+		<section id="services" class="ftco-section">
+		  <div class="container">
+		  	<div class="row">
+		  		<div class="col-md-7">
+		  			<div class="row">
+				  		<div class="col-md-12 ftco-animate pb-5">
+		            <h2 class="mb-4 subheading2">Implementation</h2>
+		            <p>We described the implementation as three main titles;
+						First implementation Hasher benefits to the POF by accessing particles easier. The second implementation is surface recognition which is an algorithm used from Akıncı, G. et al. (2012) [1] to draw vertices of surface particles. The third implementation is written by Zhu, Y. et al. [2], offers an alternative way to simulate liquids.</p>
+		          </div>
+				  	</div>
+		  			<div class="row">
+		        	<div class="col-md-4">
+		        		<div class="media block-6 services d-block align-items-stretch ftco-animate">
+		              <div class="">
+		                <h5 class="subheading3 mb-3">Hashing</h5>
+		                <p class="text-justify"> Hashing is a technique to mapping particles in a 3-dimensional space converted as a 1D hash table that allows very fast access on particles in the 3-dimensional space domain. For finding them more easily.</p>
+		              </div>
+		            </div> 
+		        	</div>
+		        	<div class="col-md-4">
+		        		<div class="media block-6 services align-items-stretch d-block ftco-animate">
+		              <div class="">
+		                <h5 class="subheading3 mb-3">Surface Particles</h5>
+		                <p  class="text-justify">This algorithm detects surface particles and the particle's cells. We can discard cells that are not used and focus on the surface particles. The POF system works more efficiently and better performance obtained.</p>
+		              </div>
+		            </div> 
+		        	</div>
+		        	<div class="col-md-4">
+		        		<div class="media block-6 services d-block align-items-stretch ftco-animate">
+		              <div class="">
+		                <h5 class="subheading3 mb-3 subheading">Zhu and Bridson</h5>
+		                <p  class="text-justify">  The research paper is written by Zhu, Y. et al. [2] offers an alternative to simulate liquids. The paper mentions surface reconstruction from particles. It calculates a scalar value of vertices that outside of the fluid to send marching cubes to visualize.</p>
+		              </div>
+		            </div> 
+		        	</div>
+	        	</div>
+	        </div>
+	        <div class="col-md-5 d-flex align-items-stretch">
+
+				<h2 class="mb-4 subheading3 gifHead">Surface sample gif</h2>
+	        	<div class="img w-100 gifImg" style="background-image: url(images/giphy.gif);
+											  background-size: contain;
+											  margin-bottom: 8vh;">	
+				</div>
+				
+	        </div>
+        </div>
+<!-- End About Me Section -->
+
+<!-- Start Services Section -->
+		<section id="testing" class="ftco-section">
+		  <div class="container">
+		  	<div class="row">
+		      <div class=" ftco-animate">
+		      	<div class = "row">
+		      		<div class="col-md-6 col-lg-6">
+		            <h2 class="mb-4 subheading2">First Chart</h2>
+		            <p class="text-justify">The cart shows the first 100 frames of the scene. The chart represents the surface recognition algorithm execution time per frame. Test scene divided into 5 phases. In the chart, the initial execution time is about 700 milliseconds(ms) and increasing when moving on the ramp. When the particles pass the ramp and moves through the sphere and capsule obstacles, complexity is decreasing exponentially. At the moment of particles collide with obstacles, particle complexity is increasing, and execution take more time. After the particles pass obstacles in the last phase, particle complexity is decreasing, and surface execution is getting faster.</p>
+						<img class="img chart" src="images/chart1.png"></img>
+					</div>
+					<div class="col-md-6 col-lg-6	">
+		            <h2 class="mb-4 subheading2">Second Chart</h2>
+		            <p class="text-justify">We prepared another test measuring scale as particle number. So, we prepared four test cases 1000 particles, 2000 particles, 3000 particles, 4096 particles 
+We decided that measuring the first 60 frames of every particle cases for the testing.  Every other variable is the same except for the particle number. The other lines of the different particle numbers are very similar to the yellow line that represents 4096 particles. In this test scene, we measured 60 frames and we did not include particles are colliding to the obstacles phase. The little spike at the right of the first chart is not exist compared. Analyse results of both graphics is complexity drop exponentially.</p>
+						<img class="img chart" src="images/chart2.png"></img>
+					</div>
+
+						
+				</div>
+		      </div>
+		</div>
+
+  	<div class="row d-block">
+
+		<section id="download" class="ftco-section">
+
+	      		<div class="col-md-12 col-lg-12 text-center">
+	            <h2 class="mb-4 subheading2 text-center">Related Resources</h2>
+	            	<a type="button"
+	            	class="m-5" 
+	            	href="download/final-min.pdf"
+	            	target="_blank" 
+					>Open Final Pdf</a>
+					<a type="button"
+					class="m-5" 
+	            	href="download/poster.pdf"
+	            	target="_blank" 
+					>Open Poster Pdf</a>
+					<a type="button"
+					class="m-5" 
+	            	href="download/slide.pdf"
+	            	target="_blank" 
+					>Open Slide Pdf</a>
+					<a type="button"
+					class="m-5" 
+	            	href="download/summary.pdf"
+	            	target="_blank" 
+					>Open Summary Pdf</a>
+				</div>
+
+		</section>
+      </div>
+		<!-- End Services Section -->
+		
+		<section class="ftco-section text-center testimony-section" id="slidePOF">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<h2 class="mb-4 subheading2 text-center">IMAGES</h2>
+						<h4 class="mb-4 subheading2 text-center"
+							style="font-size: 8px;">(Click for higher resolution.)</h2>
+						<div id="carouselExampleControls" class="carousel slide">
+							<div class="carousel-inner d-flex " style="height: -webkit-fill-available;">
+							  
+								<div class="carousel-item active">
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter">
+										<img src="images/giphy.gif" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter2">
+										<img src="images/push2.jpeg" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter3">
+										<img src="images/push9.png" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+							  </div>
+							  <div class="carousel-item">
+								<div class="col-md-3 w-25" 
+									style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+									data-toggle="modal" data-target="#exampleModalCenter4">
+										<img src="images/push3.png" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter5">
+										<img src="images/push4.jpeg" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter6">
+										<img src="images/push5.jpeg" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+								</div>
+								<div class="carousel-item">
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter7">
+										<img src="images/push6.png" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter8">
+										<img src="images/push7.jpeg" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+									<div class="col-md-3 w-25" 
+										style="max-height: 25vh !important; max-width: 24%; position: relative; display: inline-block;"
+										data-toggle="modal" data-target="#exampleModalCenter9">
+										<img src="images/push8.jpeg" class="d-block" alt="..." style="max-width: 100%;">
+									</div>
+							  	</div>
+							</div>
+							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+							  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							  <span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+							  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+							  <span class="sr-only">Next</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>	
+			</div>
+		</section>
+
+
+
+		<!-- Start Testimonials Section -->
+			<div class="container">
+				<div class="row justify-content-between mb-5 pb-3">
+		<section class="ftco-section text-center testimony-section d-flex" id="testimonial">
+          <div class="col-md-6 heading-section ftco-animate">
+          	<row>
+	          	<span class="subheading2 align-items-stretch text-justify">Conclusion</span>
+	          	<br>
+	            <p class="text-justify">The surplus of particles in a simulation can be a computational hardship for the computer. We implement various methods to get better results by doing research. POF project concentrates on solving computational difficulty problems by increasing performance and efficiency. POF makes easier to simulate with higher quantities of particles or getting better results with the same number of particles by using the hash algorithm and surface particle recognition algorithm.</p>
+	        </row>
+            <row> <img class="img-about p-5"  style="height: 46%;" src="images/yu.png"></row>
+          </div>
+          <div class="col-md-6 heading-section align-items-stretch ftco-animate">
+          	<span class="subheading2 list-unstyled">References</span>
+          	<ul class="text-justify" style="text-align: left;">
+      			<li>1-) [AIA12] Akinci, G., Ihmsen, M., Akinci, N. and Teschner, M. (2012). Parallel Surface Reconstruction for Particle‐Based Fluids. Computer Graphics Forum, 31, 1797-1809.</li>
+      			<li>2-) [ZB05] Zhu, Y., & Bridson, R. (2005). Animating sand as a fluid. (New York, NY, USA, 2005) ACM Trans. Graph., 24, 965-972.</li>
+    		</ul>
+          </div>
+
+		</section>
+        </div>
+			</div>
+		<!-- Start Contact Section -->
+		<!-- End Contact Section -->
+
+
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			role="document"
+			style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/giphy.gif" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push2.jpeg" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				 style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push9.png" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				 style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push3.png" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push4.jpeg" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>z
+			</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="exampleModalCenter6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				 style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push5.jpeg" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter7" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				 style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push6.png" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter8" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				 style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push7.jpeg" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;"
+				>Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter9" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" 
+			 role="document"
+			 style="max-width: 66% !important;">
+			<div class="modal-content">
+			<div class="modal-header"
+				 style="  border-bottom: none;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-right">
+				<img src="images/push8.jpeg" class="d-block mx-auto" alt="..." style="max-width: 100%;">
+				<button type="button" 
+						class="btn btn-secondary" 
+						data-dismiss="modal"
+						style="margin-right: 2vw;
+							   margin-top: 1vw;">Close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
